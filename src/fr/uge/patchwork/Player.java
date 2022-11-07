@@ -8,13 +8,23 @@ public class Player {
   private int pos;
   private Board board;
   private int income;
+  private String name;
 
-  public Player(int money, int pos) {
+  public Player(String name, int money, int pos) {
     this.money = money;
     // initial Position on the Board progress
     this.pos = 0;
     this.income = 0;
+    this.name = name;
     board = new Board();
+  }
+
+  public String Name() {
+    return this.name;
+  }
+
+  public int getPos() {
+    return pos;
   }
 
   public int buyPiece(Piece piece, int neutre) {
@@ -37,18 +47,16 @@ public class Player {
   }
 
   public int choosePlays(Player player2, Pieces pieces, int neutre) {
-    System.out.println("List of 3 next pieces : \n" + pieces.nextThree(neutre));
     System.out.println("B - Buy a piece \nAnother key - Pass your turn");
     var reader = new Scanner(System.in);
     var choice = reader.next();
     if (choice.equals("b") || choice.equals("B")) {
       System.out.println("Enter the number of the piece you want to buy");
       int piece = reader.nextInt();
-      System.out.println("PUTEUX" + piece);
-      while (0 >= piece && piece > 3) {
+      while (0 >= piece || piece > 3) {
         piece = reader.nextInt();
-        neutre = buyPiece(pieces.get(piece), neutre);
       }
+      neutre = buyPiece(pieces.get(piece), neutre);
     } else {
       System.out.println("You passed your turn\n");
       if (player2.pos >= this.pos) {

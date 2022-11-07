@@ -8,25 +8,60 @@ public class Game {
   private int neutre;
 
   public Game() {
-    player1 = new Player(5, 0);
-    player2 = new Player(5, 0);
+    player1 = new Player("player1", 5, 0);
+    player2 = new Player("player2", 5, 0);
     pieces = new Pieces();
     pieces.load();
     neutre = 0;
   }
-  public void start() {
+
+  public Player whoPlay(Player lastPlayer) {
+    if(player1.getPos() < 57){
+      if (player2.getPos() < 57){
+        if (player1.getPos() > player2.getPos()){
+          return player2;
+        } else if (player1.getPos() < player2.getPos()){
+          return player1;
+        }
+      } else {
+        return player1;
+      }
+    } else {
+      if (player2.getPos() < 57){
+        return player2;
+      }
+    }
+    return lastPlayer;
+  }
+
+  public Player otherPlayer(Player player) {
+    if (player.equals(player1)){
+      return player2;
+    } else {
+      return player1;
+    }
+  }
+
+  public void verifyNeutre(Player lastPlayer, Player otherPlayer) {
     var tempNeutre = -1;
-    System.out.println("Player 1 : \n" + player1);
-    //System.out.println("Player 2 : \n" + player2.getBoard());
-    tempNeutre = player1.choosePlays(player2, pieces, neutre);
+    tempNeutre = lastPlayer.choosePlays(otherPlayer, pieces, neutre);
     if (tempNeutre != neutre) {
       System.out.println(pieces.get(tempNeutre));
       pieces.deletePiece(tempNeutre);
       neutre = tempNeutre;
     }
-    System.out.println("\nPlayer 1 : \n" + player1);
-    System.out.println("Neutre " + neutre);
-
+  }
+  public void start() {
+    Player lastPlayer = player1;
+    Player otherPlayer = player2;
+    while (player1.getPos() < 57 && player2.getPos() < 57) {
+      lastPlayer = whoPlay(lastPlayer);
+      System.out.println("\nList of 3 next pieces : \n" + pieces.nextThree(neutre));
+      System.out.println("\nTurn for " + lastPlayer.Name() + " : \n" + lastPlayer);
+      otherPlayer = otherPlayer(lastPlayer);
+      verifyNeutre(lastPlayer, otherPlayer);
+      System.out.println("\n" + lastPlayer.Name() + "\n" + lastPlayer + "\nLe pion Neutre est en position " + neutre);
+    }
   }
 
 
