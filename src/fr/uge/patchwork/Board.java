@@ -14,7 +14,7 @@ public class Board {
   }
 
   private int check(int x, int y, Piece piece) {
-    var pieceBoard = piece.getFormat().split(",");
+    var pieceBoard = piece.format().split(",");
     for (int i = 0; i < pieceBoard.length; i++) {
       if (x < 0 || x + pieceBoard[i].length() > 9 || y < 0 || y + pieceBoard.length > 9) {
         return 0;
@@ -24,7 +24,7 @@ public class Board {
   }
 
   public Board addPiece(Piece piece, Board board, int x, int y) {
-    var pieceBoard = piece.getFormat().split(",");
+    var pieceBoard = piece.format().split(",");
     if (check(x, y, piece) == 1) {
       for (int j = 0; j < pieceBoard.length; j++) {
         for (int k = 0; k < pieceBoard[j].length(); k++) {

@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 
 public class Pieces {
-  private final List<Piece> pieces;
+  private final ArrayList<Piece> pieces;
 
   public Pieces() {
     pieces = new ArrayList<>();
@@ -15,6 +16,14 @@ public class Pieces {
 
   public Piece get(int index) {
     return pieces.get(index);
+  }
+
+  public int getId(int index) {
+    return pieces.get(index).id();
+  }
+
+  public void deletePiece(int index) {
+    pieces.remove(index - 1);
   }
 
   public String nextThree(int index) {
@@ -30,12 +39,12 @@ public class Pieces {
     try (var reader = Files.newBufferedReader(Path.of("pieces/pieces.txt"))) {
       String line;
       while ((line = reader.readLine()) != null) {
-
         var tokens = line.split(":");
         var piece = new Piece(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), tokens[3], id);
         pieces.add(piece);
         id++;
       }
+      Collections.shuffle(pieces);
     } catch (IOException ex) {
       throw new RuntimeException(ex);
     }
@@ -45,4 +54,5 @@ public class Pieces {
   public String toString() {
     return pieces.toString();
   }
+
 }

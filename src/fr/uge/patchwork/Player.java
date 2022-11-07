@@ -17,26 +17,18 @@ public class Player {
     board = new Board();
   }
 
-  public int getMoney() {
-    return money;
-  }
-
-  public Board getBoard() {
-    return board;
-  }
-
   public int buyPiece(Piece piece, int neutre) {
     var reader = new Scanner(System.in);
     System.out.println("Enter the position of the top left corner of the piece to place on the board");
     System.out.println("Enter x & y positions");
     int x = reader.nextInt();
     int y = reader.nextInt();
-    if (money >= piece.getPrice()) {
+    if (money >= piece.price()) {
       var newBoard = board.addPiece(piece, board, x, y);
       if (newBoard != null) {
         board = newBoard;
-        this.income += piece.getEarnings();
-        this.money -= piece.getPrice();
+        this.income += piece.earnings();
+        this.money -= piece.price();
         this.pos += piece.blocks();
         return piece.id();
       }
@@ -52,7 +44,11 @@ public class Player {
     if (choice.equals("b") || choice.equals("B")) {
       System.out.println("Enter the number of the piece you want to buy");
       int piece = reader.nextInt();
-      neutre = buyPiece(pieces.get(piece), neutre);
+      System.out.println("PUTEUX" + piece);
+      while (0 >= piece && piece > 3) {
+        piece = reader.nextInt();
+        neutre = buyPiece(pieces.get(piece), neutre);
+      }
     } else {
       System.out.println("You passed your turn\n");
       if (player2.pos >= this.pos) {

@@ -6,10 +6,6 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
 
   public Piece {
     Objects.requireNonNull(format);
-    Objects.requireNonNull(price);
-    Objects.requireNonNull(blocks);
-    Objects.requireNonNull(earnings);
-    Objects.requireNonNull(id);
 
     if (price < 0) {
       throw new IllegalArgumentException("Price must be positive");
@@ -25,22 +21,6 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
     }
   }
 
-  public int getEarnings() {
-    return earnings;
-  }
-
-  public int getBlocks() {
-    return blocks;
-  }
-
-  public int getPrice() {
-    return price;
-  }
-
-  public String getFormat() {
-    return format;
-  }
-
   @Override
   public String toString() {
 
@@ -51,7 +31,7 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
       builder.append(tokens[i]).append("\n");
     }
     
-    return "price : " + price + ",\nblocks : " + blocks +
+    return "id : " + id + "\nprice : " + price + ",\nblocks : " + blocks +
             ",\nearnings : " + earnings + ",\nformat : \n" + builder.toString();
   }
 
