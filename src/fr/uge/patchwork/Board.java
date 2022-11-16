@@ -3,11 +3,13 @@ package fr.uge.patchwork;
 public class Board {
 
   private final int[][] board;
+  private final int size;
 
   public Board() {
-    board = new int[9][9];
-    for (int i = 0; i < 9; i++) {
-      for (int j = 0; j < 9; j++) {
+    size = 9;
+    board = new int[size][size];
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
         board[i][j] = 0;
       }
     }
@@ -16,7 +18,7 @@ public class Board {
   private int check(int x, int y, Piece piece) {
     var pieceBoard = piece.format().split(",");
     for (int i = 0; i < pieceBoard.length; i++) {
-      if (x < 0 || x + pieceBoard[i].length() > 9 || y < 0 || y + pieceBoard.length > 9) {
+      if (x < 0 || x + pieceBoard[i].length() > size || y < 0 || y + pieceBoard.length > size) {
         return 0;
       }
     }
@@ -36,6 +38,18 @@ public class Board {
       return board;
     }
     return null;
+  }
+
+  public int nbEmpty() {
+    int nb = 0;
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        if (board[i][j] == 0) {
+          nb++;
+        }
+      }
+    }
+    return nb;
   }
 
 

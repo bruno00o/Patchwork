@@ -8,7 +8,7 @@ public class Player {
   private int pos;
   private Board board;
   private int income;
-  private String name;
+  private final String name;
 
   public Player(String name, int money, int pos) {
     this.money = money;
@@ -65,6 +65,10 @@ public class Player {
       }
     }
     return neutre;
+  }
+
+  public int score() {
+    return money - board.nbEmpty() * 2;
   }
 
   @Override

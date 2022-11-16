@@ -21,6 +21,52 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
     }
   }
 
+  private int maxLenLinePiece() {
+    var lines = format.split(",");
+    int max = 0;
+    for (var line : lines) {
+      if (line.length() > max) {
+        max = line.length();
+      }
+    }
+    return max;
+  }
+
+  public Piece rotate90() {
+    var newFormat = new StringBuilder();
+    var lines = format.split(",");
+    var maxLen = maxLenLinePiece();
+    for (int i = 0; i < maxLen; i++) {
+      for (int j = lines.length - 1; j >= 0; j--) {
+        if (i < lines[j].length()) {
+          newFormat.append(lines[j].charAt(i));
+        } else {
+          newFormat.append(" ");
+        }
+      }
+      newFormat.append(",");
+    }
+    return new Piece(price, blocks, earnings, newFormat.toString(), id);
+  }
+
+    public Piece flip() {
+    var newFormat = new StringBuilder();
+    var lines = format.split(",");
+    var maxLen = maxLenLinePiece();
+    for (int i = 0; i < lines.length; i++) {
+      if (lines[i].length() < maxLen) {
+        for (int j = 0; j < maxLen - lines[i].length(); j++) {
+          newFormat.append(" ");
+        }
+      }
+        for (int j = lines[i].length() - 1; j >= 0; j--) {
+            newFormat.append(lines[i].charAt(j));
+        }
+        newFormat.append(",");
+    }
+    return new Piece(price, blocks, earnings, newFormat.toString(), id);
+    }
+
   @Override
   public String toString() {
 

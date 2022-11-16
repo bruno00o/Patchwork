@@ -5,13 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="init project">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Piece.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Piece.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Pieces.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Pieces.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Main.java" afterDir="false" />
     </list>
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,7 +48,11 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/1inf3/bruno.seilliebert/Bureau/Java/Patchwork&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RunManager" selected="Application.fr.uge.patchwork.main.Main">
@@ -49,7 +71,7 @@
       <module name="Patchwork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.uge.patchwork.main.*" />
+          <option name="PATTERN" value="fr.uge.patchwork.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
