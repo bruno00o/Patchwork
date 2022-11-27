@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="WSL - Ubuntu-22.04" type="wsl" uuid="22eae311-e196-4bd9-ac16-a08b6126a382">
+        <config>
+          <option name="distributionMsId" value="Ubuntu-22.04" />
+          <option name="projectRootOnTarget" value="/mnt/c/Users/Bruno/AppData/Local/JetBrains/Toolbox/apps/IDEA-U/ch-0/222.4345.14/jbr/bin&#10;/Patchwork" />
+        </config>
+      </target>
+    </targets>
+  </component>
+</project>

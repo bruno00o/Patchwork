@@ -5,14 +5,14 @@ public class Game {
   private final Player player1;
   private final Player player2;
   private final Pieces pieces;
-  private int neutre;
+  private int neutral;
 
   public Game() {
-    player1 = new Player("player1", 5, 0);
-    player2 = new Player("player2", 5, 0);
+    player1 = new Player(5, 0);
+    player2 = new Player(5, 0);
     pieces = new Pieces();
     pieces.load();
-    neutre = 0;
+    neutral = 0;
   }
 
   public Player whoPlay(Player lastPlayer) {
