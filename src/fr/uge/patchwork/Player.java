@@ -27,6 +27,13 @@ public class Player {
     return pos;
   }
 
+  /**
+   * Let player buy a piece and ask for position
+   *
+   * @param piece
+   * @param neutre
+   * @return
+   */
   public int buyPiece(Piece piece, int neutre) {
     var reader = new Scanner(System.in);
     System.out.println("Enter the position of the top left corner of the piece to place on the board");
@@ -46,6 +53,13 @@ public class Player {
     return neutre;
   }
 
+  /**
+   * Let player choose between buying a piece or passing his turn
+   * @param player2
+   * @param pieces
+   * @param neutre
+   * @return
+   */
   public int choosePlays(Player player2, Pieces pieces, int neutre) {
     System.out.println("B - Buy a piece \nAnother key - Pass your turn");
     var reader = new Scanner(System.in);

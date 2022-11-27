@@ -26,6 +26,11 @@ public class Pieces {
     pieces.remove(index - 1);
   }
 
+  /**
+   * Get next three pieces
+   * @param index
+   * @return
+   */
   public String nextThree(int index) {
     var builder = new StringBuilder();
     for (var i = index; i < index + 3; i++) {
@@ -34,6 +39,9 @@ public class Pieces {
     return builder.toString();
   }
 
+  /**
+   * Load pieces from file
+   */
   public void load() {
     int id = 0;
     try (var reader = Files.newBufferedReader(Path.of("pieces/pieces.txt"))) {

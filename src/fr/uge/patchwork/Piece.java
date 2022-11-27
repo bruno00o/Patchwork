@@ -21,6 +21,11 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
     }
   }
 
+  /**
+   * Return the maximum length of the piece
+   *
+   * @return
+   */
   private int maxLenLinePiece() {
     var lines = format.split(",");
     int max = 0;
@@ -32,6 +37,11 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
     return max;
   }
 
+  /**
+   * Rotate the piece 90° clockwise
+   *
+   * @return
+   */
   public Piece rotate90() {
     var newFormat = new StringBuilder();
     var lines = format.split(",");
@@ -49,7 +59,12 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
     return new Piece(price, blocks, earnings, newFormat.toString(), id);
   }
 
-    public Piece flip() {
+  /**
+   * Flip the piece
+   *
+   * @return
+   */
+  public Piece flip() {
     var newFormat = new StringBuilder();
     var lines = format.split(",");
     var maxLen = maxLenLinePiece();
@@ -59,13 +74,13 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
           newFormat.append(" ");
         }
       }
-        for (int j = lines[i].length() - 1; j >= 0; j--) {
-            newFormat.append(lines[i].charAt(j));
-        }
-        newFormat.append(",");
+      for (int j = lines[i].length() - 1; j >= 0; j--) {
+        newFormat.append(lines[i].charAt(j));
+      }
+      newFormat.append(",");
     }
     return new Piece(price, blocks, earnings, newFormat.toString(), id);
-    }
+  }
 
   @Override
   public String toString() {
@@ -76,7 +91,7 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
     for (var i = 0; i < tokens.length; i++) {
       builder.append(tokens[i]).append("\n");
     }
-    
+
     return "id : " + id + "\nprice : " + price + ",\nblocks : " + blocks +
             ",\nearnings : " + earnings + ",\nformat : \n" + builder.toString();
   }
