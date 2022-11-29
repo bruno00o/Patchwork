@@ -1,5 +1,7 @@
 package fr.uge.patchwork;
 
+import java.util.Arrays;
+
 public class Board {
 
   private final int[][] board;
@@ -63,15 +65,7 @@ public class Board {
    * @return
    */
   public int nbEmpty() {
-    int nb = 0;
-    for (int i = 0; i < size; i++) {
-      for (int j = 0; j < size; j++) {
-        if (board[i][j] == 0) {
-          nb++;
-        }
-      }
-    }
-    return nb;
+    return Arrays.stream(board).mapToInt(line -> (int) Arrays.stream(line).filter(cell -> cell == 0).count()).sum();
   }
 
   @Override

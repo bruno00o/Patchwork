@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="add comments">
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="flip and rotate Piece">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Pieces.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Pieces.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Main.java" afterDir="false" />
     </list>
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="" />
     <option name="SHOW_DIALOG" value="false" />

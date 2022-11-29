@@ -1,5 +1,6 @@
 package fr.uge.patchwork;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public record Piece(int price, int blocks, int earnings, String format, int id) {
@@ -28,13 +29,7 @@ public record Piece(int price, int blocks, int earnings, String format, int id) 
    */
   private int maxLenLinePiece() {
     var lines = format.split(",");
-    int max = 0;
-    for (var line : lines) {
-      if (line.length() > max) {
-        max = line.length();
-      }
-    }
-    return max;
+    return Arrays.stream(lines).mapToInt(String::length).max().orElse(0);
   }
 
   /**

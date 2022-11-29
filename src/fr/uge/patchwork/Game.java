@@ -73,6 +73,18 @@ public class Game {
     Player lastPlayer = player1;
     Player otherPlayer = player2;
     while (player1.getPos() < 57 && player2.getPos() < 57) {
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
+      System.out.println("\nC'est au tout du joueur " + lastPlayer.Name());
       lastPlayer = whoPlay(lastPlayer);
       System.out.println("\nList of 3 next pieces : \n" + pieces.nextThree(neutral));
       System.out.println("\nTurn for " + lastPlayer.Name() + " : \n" + lastPlayer);
