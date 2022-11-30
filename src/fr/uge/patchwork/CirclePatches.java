@@ -69,11 +69,14 @@ public class CirclePatches {
 
   public String displayNextPatches(int numberOfPatches) {
     StringBuilder sb = new StringBuilder();
-    sb.append("Next " + numberOfPatches + " patches:\n");
+    if (numberOfPatches > patches.size()) {
+      numberOfPatches = patches.size();
+    }
+    sb.append("Next " + numberOfPatches + " patches:\n\n");
     for (var patch : getNextPatches(numberOfPatches)) {
       sb.append(patch).append("\n");
     }
-    return sb.toString();
+    return sb.substring(0, sb.length() - 1);
   }
 
   public void removePatch(Patch patch) {

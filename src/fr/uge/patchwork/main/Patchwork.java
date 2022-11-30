@@ -6,7 +6,9 @@ import fr.uge.patchwork.Player;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Patchwork {
   private final Player player1;
@@ -25,6 +27,7 @@ public class Patchwork {
     circlePatches.load(Path.of("pieces/pieces.txt"));
     circlePatches.shuffle();
     circlePatches.placeNeutralToken();
+    centralTimeBoard.load(Path.of("boards/board1.txt"), List.of(player1, player2));
   }
 
   public Player whoStarts() {
@@ -33,6 +36,11 @@ public class Patchwork {
     var player1Answer = reader.nextLine();
     System.out.println("Player 2: When was the last time you used a needle? (dd/mm/yyyy)");
     var player2Answer = reader.nextLine();
+    var pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+    if (!pattern.matcher(player1Answer).matches() || !pattern.matcher(player2Answer).matches()) {
+      System.out.println("Invalid date format");
+      return whoStarts();
+    }
     var player1Date = player1Answer.split("/");
     var player2Date = player2Answer.split("/");
     var player1Time = Integer.parseInt(player1Date[0]) + Integer.parseInt(player1Date[1]) * 30 + Integer.parseInt(player1Date[2]) * 365;
@@ -46,10 +54,14 @@ public class Patchwork {
   public void start() {
     var player = player1;
     System.out.println("\n" + player.getName() + " starts!\n");
+    System.out.println("The board is:");
+    System.out.println(centralTimeBoard);
+    System.out.println("\nPress a enter to continue...");
+    new Scanner(System.in).nextLine();
     do {
-
+      System.out.println(player.getName() + ":");
       System.out.println("Your money: " + player.getMoney());
-      System.out.println(player.getName() + "'s board:");
+      System.out.println("Your board:\n");
       System.out.println(player.getBoard());
       System.out.println(circlePatches.displayNextPatches(3));
       if (!player.chooseAction(circlePatches, 3)){
@@ -57,9 +69,8 @@ public class Patchwork {
       }
       System.out.println(player.getName() + "'s board after action:");
       System.out.println(player.getBoard());
-      var next = new Scanner(System.in);
       System.out.println("Press a enter to continue...");
-      next.nextLine();
+      new Scanner(System.in).nextLine();
       player = centralTimeBoard.whoPlays(player1, player2);
       System.out.println("\n" + player.getName() + " turn!\n");
 

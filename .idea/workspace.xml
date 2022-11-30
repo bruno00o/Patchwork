@@ -4,30 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="add comments">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="Patchwork">
+      <change afterPath="$PROJECT_DIR$/boards/board1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Piece.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Pieces.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Piece.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Pieces.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
     </list>
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +60,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\fr\uge\patchwork" />
     </key>
   </component>
@@ -137,7 +124,7 @@
       <workItem from="1667658957722" duration="672000" />
       <workItem from="1667666310460" duration="653000" />
       <workItem from="1667667033982" duration="108000" />
-      <workItem from="1669828315030" duration="5443000" />
+      <workItem from="1669828315030" duration="10567000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -146,7 +133,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667656296174</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Patchwork">
+      <created>1669833894516</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669833894516</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Patchwork">
+      <created>1669833915118</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669833915118</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +166,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init project" />
+    <MESSAGE value="Patchwork" />
+    <option name="LAST_COMMIT_MESSAGE" value="Patchwork" />
   </component>
 </project>

@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class Player {
   private final String name;
   private final QuiltBoard quiltBoard;
+  private final char shortName;
   private TimeToken timeToken;
 
   private int earnings;
@@ -19,8 +20,9 @@ public class Player {
       throw new IllegalArgumentException("Money must be positive");
     }
     this.name = name;
+    this.shortName = name.charAt(name.length() - 1);
     this.quiltBoard = new QuiltBoard();
-    this.timeToken = new TimeToken(0);
+    this.timeToken = new TimeToken(0, shortName);
     this.earnings = 0;
     this.money = money;
   }
@@ -39,7 +41,7 @@ public class Player {
   }
 
   public void setPosition(int position) {
-    timeToken = new TimeToken(position);
+    timeToken = new TimeToken(position, shortName);
   }
 
   private int[] askCoordinates() {
