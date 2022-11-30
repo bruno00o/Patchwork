@@ -1,93 +1,129 @@
 package fr.uge.patchwork;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Player {
-
-  private int money;
-  private int pos;
-  private Board board;
-  private int income;
   private final String name;
+  private final QuiltBoard quiltBoard;
+  private TimeToken timeToken;
 
-  public Player(String name, int money, int pos) {
-    this.money = money;
-    // initial Position on the Board progress
-    this.pos = 0;
-    this.income = 0;
+  private int earnings;
+  private int money;
+
+  public Player(String name, int money) {
+    Objects.requireNonNull(name);
+    if (money < 0) {
+      throw new IllegalArgumentException("Money must be positive");
+    }
     this.name = name;
-    board = new Board();
+    this.quiltBoard = new QuiltBoard();
+    this.timeToken = new TimeToken(0);
+    this.earnings = 0;
+    this.money = money;
   }
 
-  public String Name() {
-    return this.name;
+  public int getMoney() {
+    return money;
   }
 
-  public int getPos() {
-    return pos;
+  public void setMoney(int money) {
+    this.money = money;
   }
 
-  /**
-   * Let player buy a piece and ask for position
-   *
-   * @param piece
-   * @param neutre
-   * @return
-   */
-  public int buyPiece(Piece piece, int neutre) {
-    var reader = new Scanner(System.in);
-    System.out.println("Enter the position of the top left corner of the piece to place on the board");
-    System.out.println("Enter x & y positions");
-    int x = reader.nextInt();
-    int y = reader.nextInt();
-    if (money >= piece.price()) {
-      var newBoard = board.addPiece(piece, board, x, y);
-      if (newBoard != null) {
-        board = newBoard;
-        this.income += piece.earnings();
-        this.money -= piece.price();
-        this.pos += piece.blocks();
-        return piece.id();
-      }
+
+  public int getPosition() {
+    return timeToken.position();
+  }
+
+  public void setPosition(int position) {
+    timeToken = new TimeToken(position);
+  }
+
+  private int[] askCoordinates() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter the coordinates of the piece you want to place (x, y): ");
+    var pattern = Pattern.compile("\\d+, *\\d+");
+    var input = scanner.nextLine();
+    if (!pattern.matcher(input).matches()) {
+      System.out.println("Invalid coordinates");
+      return askCoordinates();
     }
-    return neutre;
+    var coordinates = input.split(",");
+    return new int[]{Integer.parseInt(coordinates[0].strip()), Integer.parseInt(coordinates[1].strip())};
   }
 
-  /**
-   * Let player choose between buying a piece or passing his turn
-   * @param player2
-   * @param pieces
-   * @param neutre
-   * @return
-   */
-  public int choosePlays(Player player2, Pieces pieces, int neutre) {
-    System.out.println("B - Buy a piece \nAnother key - Pass your turn");
+  private void patchBought(Patch patchToBuy, CirclePatches circlePatches) {
+    System.out.println("You bought a patch");
+    this.timeToken = this.timeToken.forward(patchToBuy.forwardBlocks());
+    this.money += patchToBuy.price();
+    this.earnings = patchToBuy.earnings();
+    circlePatches.removePatch(patchToBuy);
+  }
+
+  private boolean buyPatch(CirclePatches circlePatches, int nbPatch) {
+    var scanner = new Scanner(System.in);
+    if (circlePatches.isEmpty()) {
+      System.out.println("There is no patch left");
+      return false;
+    }
+    if (circlePatches.size() < nbPatch) {
+      nbPatch = circlePatches.size();
+    }
+    System.out.println("Enter the patch you want to buy (1 to " + nbPatch + "): ");
+    var patch = scanner.nextLine();
+    List<Patch> patches = circlePatches.getNextPatches(nbPatch);
+    int chosen = Integer.parseInt(patch);
+    if (chosen < 1 || chosen > nbPatch) {
+      System.out.println("Invalid patch");
+      return false;
+    }
+    var patchToBuy = patches.get(chosen - 1);
+    if (patchToBuy.price() > money) {
+      System.out.println("You don't have enough money");
+      return false;
+    }
+    int[] coordinates = askCoordinates();
+    if (quiltBoard.addPatch(patchToBuy, coordinates[0], coordinates[1])) {
+      patchBought(patchToBuy, circlePatches);
+      return true;
+    }
+    System.out.println("Invalid coordinates");
+    return false;
+  }
+
+  public boolean chooseAction(CirclePatches circlePatches, int nbPatch) {
     var reader = new Scanner(System.in);
-    var choice = reader.next();
-    if (choice.equals("b") || choice.equals("B")) {
-      System.out.println("Enter the number of the piece you want to buy");
-      int piece = reader.nextInt();
-      while (0 >= piece || piece > 3) {
-        piece = reader.nextInt();
+    System.out.println("Choose an action: B to buy a patch, P to pass");
+    var action = reader.next();
+    if (action.equals("B") || action.equals("b")) {
+      if (!buyPatch(circlePatches, nbPatch)) {
+        chooseAction(circlePatches, nbPatch);
       }
-      neutre = buyPiece(pieces.get(piece), neutre);
+    } else if (action.equals("P") || action.equals("p")) {
+      return false;
     } else {
-      System.out.println("You passed your turn\n");
-      if (player2.pos >= this.pos) {
-        this.money += player2.pos - this.pos + 1;
-        this.pos = player2.pos + 1;
-      }
+      System.out.println("Invalid action");
+      chooseAction(circlePatches, nbPatch);
     }
-    return neutre;
+    return true;
+  }
+
+  public String getBoard() {
+    return quiltBoard.toString();
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public TimeToken getTimeToken() {
+    return timeToken;
   }
 
   public int score() {
-    return money - board.nbEmpty() * 2;
+    return money - quiltBoard.nbEmptyCases();
   }
-
-  @Override
-  public String toString() {
-    return board + "Money : " + money + "\tPosition : " + pos + "\tIncome : " + income + "\n";
-  }
-
 }
