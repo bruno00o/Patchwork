@@ -64,8 +64,8 @@ public class CentralTimeBoard {
 
   public void passedTurn(Player actual, Player other) {
     if (actual.getPosition() <= other.getPosition()) {
-      actual.setMoney(other.getPosition() - actual.getPosition() + 1);
-      actual.setPosition(other.getPosition() + 1);
+      actual.addMoney(other.getPosition() - actual.getPosition() + 1);
+      actual.setPosition(other.getPosition() + 1, actual.getTimeToken().position());
     }
   }
 

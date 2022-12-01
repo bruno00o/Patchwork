@@ -69,6 +69,12 @@ public class Player {
     circlePatches.removePatch(patchToBuy);
   }
 
+  private boolean buyAgain(CirclePatches circlePatches, int nbPatch) {
+    System.out.println("Invalid patch number");
+    buyPatch(circlePatches, nbPatch);
+    return false;
+  }
+
   private boolean buyPatch(CirclePatches circlePatches, int nbPatch) {
     var scanner = new Scanner(System.in);
     if (circlePatches.isEmpty()) {
@@ -79,12 +85,15 @@ public class Player {
       nbPatch = circlePatches.size();
     }
     System.out.println("Enter the patch you want to buy (1 to " + nbPatch + "): ");
+    var pattern = Pattern.compile(" *\\d+ *");
     var patch = scanner.nextLine();
     List<Patch> patches = circlePatches.getNextPatches(nbPatch);
-    int chosen = Integer.parseInt(patch);
-    if (chosen < 1 || chosen > nbPatch) {
-      System.out.println("Invalid patch");
-      return false;
+    if (!pattern.matcher(patch).matches()) {
+      return buyAgain(circlePatches, nbPatch);
+    }
+    var chosen = Integer.parseInt(patch);
+    if(chosen > nbPatch || chosen < 1){
+      return buyAgain(circlePatches, nbPatch);
     }
     var patchToBuy = patches.get(chosen - 1);
     if (patchToBuy.price() > money) {

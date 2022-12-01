@@ -19,9 +19,18 @@ public class QuiltBoard {
   private boolean check(Patch patch, int x, int y) {
     var patchBoard = patch.format().split(",");
     for (var row : patchBoard) {
-      if (x < 0 || x + row.length() > size || y < 0 || y + patchBoard.length > size) {
+      // get length of row without character ' '
+      var length = row.replace(" ", "").length();
+      if (x < 0 || x + patchBoard.length > size || y < 0 || y + length > size) {
         return false;
       }
+      // check if not overlap
+      for (int i = 0; i < row.length(); i++) {
+        if (row.charAt(i) == '*' && board[x][y + i] != 0) {
+          return false;
+        }
+      }
+      x++;
     }
     return true;
   }
