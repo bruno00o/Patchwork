@@ -2,7 +2,7 @@ package fr.uge.patchwork;
 
 import java.util.Objects;
 
-public record TimeToken(int position, char shortName) {
+public record TimeToken(int position, int oldPosition, char shortName) {
   public TimeToken {
     // could check max value too
     Objects.requireNonNull(shortName);
@@ -12,6 +12,6 @@ public record TimeToken(int position, char shortName) {
   }
 
   public TimeToken forward(int nbBlocks) {
-    return new TimeToken(position + nbBlocks, shortName);
+    return new TimeToken(position + nbBlocks, position, shortName);
   }
 }

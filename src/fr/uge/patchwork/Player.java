@@ -22,7 +22,7 @@ public class Player {
     this.name = name;
     this.shortName = name.charAt(name.length() - 1);
     this.quiltBoard = new QuiltBoard();
-    this.timeToken = new TimeToken(0, shortName);
+    this.timeToken = new TimeToken(0, 0, shortName);
     this.earnings = 0;
     this.money = money;
   }
@@ -35,13 +35,17 @@ public class Player {
     this.money = money;
   }
 
+  public void addMoney(int money) {
+    this.money += money;
+  }
+
 
   public int getPosition() {
     return timeToken.position();
   }
 
-  public void setPosition(int position) {
-    timeToken = new TimeToken(position, shortName);
+  public void setPosition(int position, int oldPosition) {
+    timeToken = new TimeToken(position, oldPosition, shortName);
   }
 
   private int[] askCoordinates() {

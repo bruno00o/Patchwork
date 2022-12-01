@@ -4,18 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="Patchwork">
-      <change afterPath="$PROJECT_DIR$/boards/board1.txt" afterDir="false" />
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="Create central board">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
     </list>
-    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="" />
+    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="">
+      <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +36,32 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java">
+      <ranges>
+        <range start1="47" end1="48" start2="47" end2="48" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="51" end1="51" start2="51" end2="54" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="63" end1="65" start2="66" end2="68" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
+        <range start1="67" end1="67" start2="70" end2="80" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/pieces/pieces.txt">
+      <ranges>
+        <range start1="0" end1="1" start2="0" end2="1" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
+        <range start1="2" end1="3" start2="2" end2="3" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java">
+      <ranges>
+        <range start1="24" end1="25" start2="24" end2="25" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="36" end1="36" start2="36" end2="40" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="42" end1="44" start2="46" end2="48" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="67" end1="67" start2="71" end2="77" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
+        <range start1="77" end1="77" start2="87" end2="88" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
+        <range start1="79" end1="83" start2="90" end2="96" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -45,19 +74,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "C:/Users/Bruno/Desktop",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork" />
@@ -124,7 +154,9 @@
       <workItem from="1667658957722" duration="672000" />
       <workItem from="1667666310460" duration="653000" />
       <workItem from="1667667033982" duration="108000" />
-      <workItem from="1669828315030" duration="10567000" />
+      <workItem from="1669828315030" duration="10620000" />
+      <workItem from="1669924263166" duration="74000" />
+      <workItem from="1669924349080" duration="7412000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -147,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669833915118</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Create central board">
+      <created>1669842462817</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669842462817</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +206,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project" />
     <MESSAGE value="Patchwork" />
-    <option name="LAST_COMMIT_MESSAGE" value="Patchwork" />
+    <MESSAGE value="Create central board" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create central board" />
   </component>
 </project>

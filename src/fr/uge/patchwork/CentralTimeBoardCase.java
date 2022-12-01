@@ -16,7 +16,6 @@ public record CentralTimeBoardCase(List<TimeToken> timeTokens, int leatherPatch,
   }
 
   public CentralTimeBoardCase addTimeToken(TimeToken timeToken) {
-    Objects.requireNonNull(timeToken);
     if (timeTokens != null) {
       timeTokens.add(timeToken);
     } else {
@@ -24,6 +23,13 @@ public record CentralTimeBoardCase(List<TimeToken> timeTokens, int leatherPatch,
       copy.add(timeToken);
       return new CentralTimeBoardCase(copy, leatherPatch, button);
     }
+    return this;
+  }
+
+  public CentralTimeBoardCase removeTimeToken(TimeToken timeToken) {
+    Objects.requireNonNull(timeToken);
+    // remove by shortName
+    timeTokens.stream().filter(t -> t.shortName() == timeToken.shortName()).findFirst().ifPresent(timeTokens::remove);
     return this;
   }
 

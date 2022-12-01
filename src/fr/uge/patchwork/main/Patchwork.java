@@ -54,11 +54,11 @@ public class Patchwork {
   public void start() {
     var player = player1;
     System.out.println("\n" + player.getName() + " starts!\n");
-    System.out.println("The board is:");
-    System.out.println(centralTimeBoard);
-    System.out.println("\nPress a enter to continue...");
-    new Scanner(System.in).nextLine();
     do {
+      System.out.println("Central board:");
+      System.out.println(centralTimeBoard);
+      System.out.println("\nPress a enter to continue...");
+      new Scanner(System.in).nextLine();
       System.out.println(player.getName() + ":");
       System.out.println("Your money: " + player.getMoney());
       System.out.println("Your board:\n");
@@ -67,6 +67,7 @@ public class Patchwork {
       if (!player.chooseAction(circlePatches, 3)){
         centralTimeBoard.passedTurn(player, player == player1 ? player2 : player1);
       }
+      centralTimeBoard.moveTimeToken(player);
       System.out.println(player.getName() + "'s board after action:");
       System.out.println(player.getBoard());
       System.out.println("Press a enter to continue...");
@@ -74,7 +75,7 @@ public class Patchwork {
       player = centralTimeBoard.whoPlays(player1, player2);
       System.out.println("\n" + player.getName() + " turn!\n");
 
-    } while (!centralTimeBoard.gameIsOver(player1, player2));
+    } while (!centralTimeBoard.gameIsOver(player1, player2, circlePatches));
   }
 
   public static void main(String[] args) throws IOException {

@@ -45,8 +45,11 @@ public class CentralTimeBoard {
     }
   }
 
-  public boolean gameIsOver(Player player1, Player player2) {
+  public boolean gameIsOver(Player player1, Player player2, CirclePatches circlePatches) {
     if (player1.getTimeToken().position() == size && player2.getTimeToken().position() == size) {
+      return true;
+    }
+    if (circlePatches.isEmpty()) {
       return true;
     }
     return false;
@@ -64,6 +67,16 @@ public class CentralTimeBoard {
       actual.setMoney(other.getPosition() - actual.getPosition() + 1);
       actual.setPosition(other.getPosition() + 1);
     }
+  }
+
+  public void moveTimeToken(Player player) {
+    var timeToken = player.getTimeToken();
+    var position = timeToken.position();
+    var oldPosition = timeToken.oldPosition();
+    var caseOfTimeToken = centralTimeBoard.get(oldPosition);
+    centralTimeBoard.set(oldPosition, caseOfTimeToken.removeTimeToken(timeToken));
+    var newCase = centralTimeBoard.get(position);
+    centralTimeBoard.set(position, newCase.addTimeToken(timeToken));
   }
 
   @Override
