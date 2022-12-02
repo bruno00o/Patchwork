@@ -67,16 +67,65 @@ public class CirclePatches {
             .collect(Collectors.toList());
   }
 
+  public static int getMaxHeight(List<Patch> patches) {
+    return patches.stream().mapToInt(Patch::getHeight).max().orElseThrow();
+  }
+
   public String displayNextPatches(int numberOfPatches) {
     StringBuilder sb = new StringBuilder();
     if (numberOfPatches > patches.size()) {
       numberOfPatches = patches.size();
     }
     sb.append("Next " + numberOfPatches + " patches:\n\n");
-    for (var patch : getNextPatches(numberOfPatches)) {
-      sb.append(patch).append("\n");
+    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    sb.append("| Index              |").append(" ".repeat(5));
+    for (int i = 0; i < numberOfPatches; i++) {
+      sb.append(i + 1).append(" ".repeat(5)).append("|").append(" ".repeat(5));
     }
-    return sb.substring(0, sb.length() - 1);
+    sb.append("\n");
+    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    sb.append("| Price              |").append(" ".repeat(5));
+    for (var patch : getNextPatches(numberOfPatches)) {
+      sb.append(patch.price());
+      if (patch.price() < 10) {
+        sb.append(" ".repeat(5)).append("|").append(" ".repeat(5));
+      } else {
+        sb.append(" ".repeat(4)).append("|").append(" ".repeat(5));
+      }
+    }
+    sb.append("\n");
+    sb.append("| Number of blocks   |").append(" ".repeat(5));
+    for (var patch : getNextPatches(numberOfPatches)) {
+      sb.append(patch.forwardBlocks()).append(" ".repeat(5)).append("|").append(" ".repeat(5));
+    }
+    sb.append("\n");
+    sb.append("| Earnings           |").append(" ".repeat(5));
+    for (var patch : getNextPatches(numberOfPatches)) {
+      sb.append(patch.earnings()).append(" ".repeat(5)).append("|").append(" ".repeat(5));
+    }
+    sb.append("\n");
+    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    for (int i = 0; i < getMaxHeight(getNextPatches(numberOfPatches)); i++) {
+      if (i == 0) {
+        sb.append("| Format             |");
+      } else {
+        sb.append("|                    |");
+      }
+      for (int j = 0; j < numberOfPatches; j++) {
+        var patch = getNextPatches(numberOfPatches).get(j);
+        if (i < patch.getHeight()) {
+          int spaces = 11 - patch.getFormatLine(i).length();
+          int frontSpaces = spaces / 2;
+          int backSpaces = spaces - frontSpaces;
+          sb.append(" ".repeat(frontSpaces)).append(patch.getFormatLine(i)).append(" ".repeat(backSpaces)).append("|");
+        } else {
+          sb.append(" ".repeat(11)).append("|");
+        }
+      }
+      sb.append("\n");
+    }
+    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    return sb.toString();
   }
 
   public void removePatch(Patch patch) {

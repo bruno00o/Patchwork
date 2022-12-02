@@ -17,7 +17,7 @@ public class CentralTimeBoard {
     this.centralTimeBoard = new ArrayList<>(size);
     this.isBasic = isBasic;
     for (int i = 0; i < size; i++) {
-      centralTimeBoard.add(new CentralTimeBoardCase(null, 0, 0));
+      centralTimeBoard.add(new CentralTimeBoardCase(null, null, 0));
     }
   }
 
@@ -30,11 +30,11 @@ public class CentralTimeBoard {
         for (int i = 0; i < tokens.length; i++) {
           var token = tokens[i];
           if (token.equals("0") || (token.equals("*") && isBasic)) {
-            centralTimeBoard.set(i, new CentralTimeBoardCase(null, 0, 0));
+            centralTimeBoard.set(i, new CentralTimeBoardCase(null, null, 0));
           } else if (token.equals("*")) {
-            centralTimeBoard.set(i, new CentralTimeBoardCase(null, 1, 0));
+            centralTimeBoard.set(i, new CentralTimeBoardCase(null, new Patch("*", 0, 0, 0), 0));
           } else if (token.equals("x")) {
-            centralTimeBoard.set(i, new CentralTimeBoardCase(null, 0, 1));
+            centralTimeBoard.set(i, new CentralTimeBoardCase(null, null, 1));
           }
         }
       }
@@ -66,6 +66,7 @@ public class CentralTimeBoard {
     if (actual.getPosition() <= other.getPosition()) {
       actual.addMoney(other.getPosition() - actual.getPosition() + 1);
       actual.setPosition(other.getPosition() + 1, actual.getTimeToken().position());
+      action(actual, centralTimeBoard.get(actual.getPosition()));
     }
   }
 
@@ -77,6 +78,24 @@ public class CentralTimeBoard {
     centralTimeBoard.set(oldPosition, caseOfTimeToken.removeTimeToken(timeToken));
     var newCase = centralTimeBoard.get(position);
     centralTimeBoard.set(position, newCase.addTimeToken(timeToken));
+    action(player, newCase);
+  }
+
+  private void action(Player player, CentralTimeBoardCase centralTimeBoardCase) {
+    var timeToken = player.getTimeToken();
+    if (centralTimeBoardCase.hasLeatherPatch()) {
+      System.out.println("You have found a leather patch");
+      var patch = centralTimeBoardCase.getLeatherPatch();
+      int[] coordinates = Player.askCoordinates();
+      if (player.getQuiltBoard().addPatch(patch, coordinates[0], coordinates[1])) {
+        centralTimeBoardCase.removeLeatherPatch();
+      }
+    }
+    if (centralTimeBoardCase.hasButton()) {
+      System.out.println("You have found a button");
+      player.addMoney(1);
+      centralTimeBoardCase.removeButton();
+    }
   }
 
   @Override

@@ -27,6 +27,15 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return count;
   }
 
+  public String getFormatLine(int line) {
+    var lines = format.split(",");
+    return lines[line];
+  }
+
+  public int getHeight() {
+    return format.split(",").length;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

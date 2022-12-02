@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public record CentralTimeBoardCase(List<TimeToken> timeTokens, int leatherPatch, int button) {
-  public CentralTimeBoardCase {
+public class CentralTimeBoardCase {
+  private final List<TimeToken> timeTokens;
+  private Patch leatherPatch;
+  private int button;
+  public CentralTimeBoardCase(List<TimeToken> timeTokens, Patch leatherPatch, int button) {
+    this.timeTokens = timeTokens;
+    this.leatherPatch = leatherPatch;
+    this.button = button;
     // Objects.requireNonNull(timeToken);
-    if (leatherPatch < 0) {
-      throw new IllegalArgumentException("Leather patch must be positive or null");
-    }
     if (button < 0) {
       throw new IllegalArgumentException("Button must be positive or null");
     }
@@ -33,6 +36,26 @@ public record CentralTimeBoardCase(List<TimeToken> timeTokens, int leatherPatch,
     return this;
   }
 
+  public boolean hasButton() {
+    return button > 0;
+  }
+
+  public boolean hasLeatherPatch() {
+    return leatherPatch != null;
+  }
+
+  public Patch getLeatherPatch() {
+    return leatherPatch;
+  }
+
+  public void removeLeatherPatch() {
+    leatherPatch = null;
+  }
+
+  public void removeButton() {
+    button = 0;
+  }
+
   @Override
   public String toString() {
     if (timeTokens != null && !timeTokens.isEmpty()) {
@@ -45,7 +68,7 @@ public record CentralTimeBoardCase(List<TimeToken> timeTokens, int leatherPatch,
     } else if (timeTokens != null) {
       return " ";
     }
-    if (leatherPatch != 0) {
+    if (leatherPatch != null) {
       return "*";
     }
     if (button != 0) {

@@ -48,7 +48,11 @@ public class Player {
     timeToken = new TimeToken(position, oldPosition, shortName);
   }
 
-  private int[] askCoordinates() {
+  public QuiltBoard getQuiltBoard() {
+    return quiltBoard;
+  }
+
+  public static int[] askCoordinates() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the coordinates of the piece you want to place (x, y): ");
     var pattern = Pattern.compile("\\d+, *\\d+");
@@ -61,7 +65,7 @@ public class Player {
     return new int[]{Integer.parseInt(coordinates[0].strip()), Integer.parseInt(coordinates[1].strip())};
   }
 
-  private void patchBought(Patch patchToBuy, CirclePatches circlePatches) {
+  public void patchBought(Patch patchToBuy, CirclePatches circlePatches) {
     System.out.println("You bought a patch");
     this.timeToken = this.timeToken.forward(patchToBuy.forwardBlocks());
     this.money += patchToBuy.price();

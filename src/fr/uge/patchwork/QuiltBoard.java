@@ -55,7 +55,7 @@ public class QuiltBoard {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append(" \\  0 1 2 3 4 5 6 7 8\n");
+    sb.append(" \\  0 1 2 3 4 5 6 7 8 x\n");
     sb.append("  \\ _ _ _ _ _ _ _ _ _\n");
     for (int i = 0; i < size; i++) {
       sb.append(i).append(" | ");
@@ -64,6 +64,7 @@ public class QuiltBoard {
       }
       sb.append("\n");
     }
+    sb.append("y\n");
     return sb.toString();
   }
 }

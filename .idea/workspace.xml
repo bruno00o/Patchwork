@@ -4,21 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="Create central board">
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="nice">
+      <change afterPath="$PROJECT_DIR$/pieces/patches.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
-    </list>
-    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="">
-      <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
     </list>
+    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,32 +33,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java">
-      <ranges>
-        <range start1="47" end1="48" start2="47" end2="48" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="51" end1="51" start2="51" end2="54" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="63" end1="65" start2="66" end2="68" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
-        <range start1="67" end1="67" start2="70" end2="80" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/pieces/pieces.txt">
-      <ranges>
-        <range start1="0" end1="1" start2="0" end2="1" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
-        <range start1="2" end1="3" start2="2" end2="3" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java">
-      <ranges>
-        <range start1="24" end1="25" start2="24" end2="25" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="36" end1="36" start2="36" end2="40" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="42" end1="44" start2="46" end2="48" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="67" end1="67" start2="71" end2="77" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
-        <range start1="77" end1="77" start2="87" end2="88" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
-        <range start1="79" end1="83" start2="90" end2="96" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -82,10 +54,15 @@
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "last_opened_file_path": "C:/Users/Bruno/Desktop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -156,7 +133,8 @@
       <workItem from="1667667033982" duration="108000" />
       <workItem from="1669828315030" duration="10620000" />
       <workItem from="1669924263166" duration="74000" />
-      <workItem from="1669924349080" duration="7412000" />
+      <workItem from="1669924349080" duration="7670000" />
+      <workItem from="1670013890181" duration="8424000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -186,7 +164,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669842462817</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="nice">
+      <created>1669933895537</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669933895537</updated>
+    </task>
+    <task id="LOCAL-00006" summary="nice">
+      <created>1669934063256</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669934063256</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Changes by dilie">
+      <created>1669934072759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669934072759</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +206,8 @@
     <MESSAGE value="init project" />
     <MESSAGE value="Patchwork" />
     <MESSAGE value="Create central board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create central board" />
+    <MESSAGE value="nice" />
+    <MESSAGE value="Changes by dilie" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by dilie" />
   </component>
 </project>
