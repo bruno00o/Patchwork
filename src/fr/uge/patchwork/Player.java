@@ -1,5 +1,7 @@
 package fr.uge.patchwork;
 
+
+
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
@@ -65,7 +67,27 @@ public class Player {
     return new int[]{Integer.parseInt(coordinates[0].strip()), Integer.parseInt(coordinates[1].strip())};
   }
 
-  public void patchBought(Patch patchToBuy, CirclePatches circlePatches) {
+  private Patch askRotation(Patch patch) {
+    // Ask the player want to rotate the patch
+    var reader = new Scanner(System.in);
+    System.out.println("Rotate the patch (r/R) Flip the patch (f/F) or do nothing (n/N)?");
+    var pattern = Pattern.compile("[rRfFnN]");
+    var answer = reader.nextLine();
+    if (!pattern.matcher(answer).matches()) {
+      System.out.println("Invalid answer");
+      askRotation(patch);
+    }
+    if (answer.equals("r") || answer.equals("R")) {
+      System.out.println("Rotate the patch\n" + patch.rotatePiece());
+      return askRotation(patch.rotatePiece());
+    } else if (answer.equals("f") || answer.equals("F")) {
+      System.out.println("Flip the patch\n" + patch.flipPiece());
+      return askRotation(patch.flipPiece());
+    }
+    return patch;
+  }
+
+  private void patchBought(Patch patchToBuy, CirclePatches circlePatches) {
     System.out.println("You bought a patch");
     this.timeToken = this.timeToken.forward(patchToBuy.forwardBlocks());
     this.money += patchToBuy.price();
@@ -88,6 +110,7 @@ public class Player {
     if (circlePatches.size() < nbPatch) {
       nbPatch = circlePatches.size();
     }
+
     System.out.println("Enter the patch you want to buy (1 to " + nbPatch + "): ");
     var pattern = Pattern.compile(" *\\d+ *");
     var patch = scanner.nextLine();
@@ -104,6 +127,7 @@ public class Player {
       System.out.println("You don't have enough money");
       return false;
     }
+    patchToBuy = askRotation(patchToBuy);
     int[] coordinates = askCoordinates();
     if (quiltBoard.addPatch(patchToBuy, coordinates[0], coordinates[1])) {
       patchBought(patchToBuy, circlePatches);
@@ -142,7 +166,7 @@ public class Player {
     return timeToken;
   }
 
-  public int score() {
-    return money - quiltBoard.nbEmptyCases();
+  public int getScore() {
+    return money - quiltBoard.nbEmptyCases() * 2;
   }
 }

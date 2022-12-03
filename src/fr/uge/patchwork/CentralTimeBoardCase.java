@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A board for the game Patchwork.
+ *
+ * @author Seilliebert Bruno & Oeuvrard Dilien
+ */
 public class CentralTimeBoardCase {
   private final List<TimeToken> timeTokens;
   private Patch leatherPatch;
@@ -18,6 +23,10 @@ public class CentralTimeBoardCase {
     }
   }
 
+  /**
+   * Add a time token to the board.
+   * @return the timeToken
+   */
   public CentralTimeBoardCase addTimeToken(TimeToken timeToken) {
     if (timeTokens != null) {
       timeTokens.add(timeToken);
@@ -29,13 +38,16 @@ public class CentralTimeBoardCase {
     return this;
   }
 
+  /**
+   * Remove a time token from the board.
+   * @return the timeToken
+   */
   public CentralTimeBoardCase removeTimeToken(TimeToken timeToken) {
     Objects.requireNonNull(timeToken);
     // remove by shortName
     timeTokens.stream().filter(t -> t.shortName() == timeToken.shortName()).findFirst().ifPresent(timeTokens::remove);
     return this;
   }
-
   public boolean hasButton() {
     return button > 0;
   }

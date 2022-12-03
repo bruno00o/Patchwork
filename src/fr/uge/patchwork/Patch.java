@@ -32,6 +32,52 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return lines[line];
   }
 
+  private int maxLenLinePiece() {
+    var lines = format.split(",");
+    int max = 0;
+    for (var line : lines) {
+      if (line.length() > max) {
+        max = line.length();
+      }
+    }
+    return max;
+  }
+
+  public Patch rotatePiece() {
+    var newFormat = new StringBuilder();
+    var lines = format.split(",");
+    var maxLen = maxLenLinePiece();
+    for (int i = 0; i < maxLen; i++) {
+      for (int j = lines.length - 1; j >= 0; j--) {
+        if (i < lines[j].length()) {
+          newFormat.append(lines[j].charAt(i));
+        } else {
+          newFormat.append(' ');
+        }
+      }
+      newFormat.append(',');
+    }
+    return new Patch(newFormat.toString(), price, forwardBlocks, earnings);
+  }
+
+  public Patch flipPiece() {
+    var newFormat = new StringBuilder();
+    var lines = format.split(",");
+    var maxLen = maxLenLinePiece();
+    for (int i = 0; i < lines.length; i++) {
+      if (lines[i].length() < maxLen) {
+        for (int j = 0; j < maxLen - lines[i].length(); j++) {
+          newFormat.append(" ");
+        }
+      }
+      for (int j = lines[i].length() - 1; j >= 0; j--) {
+        newFormat.append(lines[i].charAt(j));
+      }
+      newFormat.append(",");
+    }
+    return new Patch(newFormat.toString(), price, forwardBlocks, earnings);
+  }
+
   public int getHeight() {
     return format.split(",").length;
   }

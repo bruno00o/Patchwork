@@ -24,7 +24,7 @@ public class Patchwork {
   }
 
   public void init() throws IOException {
-    circlePatches.load(Path.of("pieces/patches.txt"));
+    circlePatches.load(Path.of("pieces/pieces.txt"));
     circlePatches.shuffle();
     circlePatches.placeNeutralToken();
     centralTimeBoard.load(Path.of("boards/board1.txt"), List.of(player1, player2));

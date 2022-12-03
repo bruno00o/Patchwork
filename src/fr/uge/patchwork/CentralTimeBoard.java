@@ -45,12 +45,18 @@ public class CentralTimeBoard {
     }
   }
 
+  public boolean theWinnerIs(Player player1, Player player2) {
+    System.out.println("Player 1: " + player1.getScore() + "\nPlayer 2: " + player2.getScore() + "\n");
+    System.out.println("The winner is: " + (player1.getScore() > player2.getScore() ? "Player 1" : "Player 2"));
+    return player1.getScore() > player2.getScore();
+  }
+
   public boolean gameIsOver(Player player1, Player player2, CirclePatches circlePatches) {
     if (player1.getTimeToken().position() == size && player2.getTimeToken().position() == size) {
-      return true;
+      return theWinnerIs(player1, player2);
     }
     if (circlePatches.isEmpty()) {
-      return true;
+      return theWinnerIs(player1, player2);
     }
     return false;
   }
