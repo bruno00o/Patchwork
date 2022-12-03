@@ -12,16 +12,41 @@ public class QuiltBoard {
   private final int[][] board;
   private final int size;
 
+  /**
+   * Init QuiltBoard class, the player board.
+   */
   public QuiltBoard() {
     this.size = 9;
     this.board = new int[size][size];
     Arrays.stream(this.board).forEach(row -> Arrays.fill(row, 0));
   }
 
-  public int[][] getBoard() {
-    return board;
+  /**
+   * Check if the board is full, if the player can place a new patch.
+   * @param patch (Patch) the patch to place.
+   * @return (boolean) true if the player can place the patch, false otherwise.
+   */
+  public boolean possibleToBuy(Patch patch) {
+    for (int i = 0; i < size; i++) {
+      for (int j = 0; j < size; j++) {
+        if (board[i][j] == 0) {
+          if (check(patch, i, j)) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
+  /**
+   * Check if you can place a piece on the board.
+   *
+   * @param patch (Patch) the patch to place.
+   * @param x     (int) the x position.
+   * @param y     (int) the y position.
+   * @return (boolean) true if you can place the patch.
+   */
   private boolean check(Patch patch, int x, int y) {
     var patchBoard = patch.format().split(",");
     int j = x;
@@ -34,15 +59,23 @@ public class QuiltBoard {
       }
       // check if not overlap
       for (int i = 0; i < row.length(); i++) {
-        if (row.charAt(i) == '*' && board[x][y + i] != 0) {
+        if (row.charAt(i) == '*' && board[j][y + i] != 0) {
           return false;
         }
       }
-      x++;
+      j++;
     }
     return true;
   }
 
+  /**
+   * Add a patch to the board.
+   *
+   * @param patch (Patch) the patch to add.
+   * @param x     (int) the x position.
+   * @param y     (int) the y position.
+   * @return (boolean) true if the patch is added.
+   */
   public boolean addPatch(Patch patch, int x, int y) {
     var patchBoard = patch.format().split(",");
     if (!check(patch, x, y)) return false;
@@ -69,6 +102,11 @@ public class QuiltBoard {
             .count() == squareSize * squareSize;
   }
 
+  /**
+   * get the number of case empty on the board.
+   *
+   * @return (int) the number of case empty on the board.
+   */
   public int nbEmptyCases() {
     return (int) Arrays.stream(board).flatMapToInt(Arrays::stream).filter(i -> i == 0).count();
   }

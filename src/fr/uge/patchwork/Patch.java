@@ -2,6 +2,13 @@ package fr.uge.patchwork;
 
 import java.util.Objects;
 
+/**
+ * A patchwork is a set of rectangles that can be placed on a grid.
+ * @param format (String) the format of the patch
+ * @param price (int) the price of the patch
+ * @param forwardBlocks (int) the number of blocks in the forward direction
+ * @param earnings (int) the earnings of the patch
+ */
 public record Patch(String format, int price, int forwardBlocks, int earnings) {
   public Patch {
     Objects.requireNonNull(format);
@@ -16,8 +23,11 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     }
   }
 
+  /**
+   * return the number of blocks in the patch.
+   * @return (int) the number of '*' on the patch
+   */
   public int getNumberOfBlocks() {
-    // count '*' in format use streams
     int count = 0;
     for (int i = 0; i < format.length(); i++) {
       if (format.charAt(i) == '*') {
@@ -27,11 +37,20 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return count;
   }
 
+  /**
+   * get the format of the patch in a 2D array.
+   * @param line (int) the number of lines of the patch
+   * @return (String) the format of the patch
+   */
   public String getFormatLine(int line) {
     var lines = format.replace(".", " ").split(",");
     return lines[line];
   }
 
+  /**
+   * Max length of the patch.
+   * @return (int) the max length of the patch
+   */
   private int maxLenLinePiece() {
     var lines = format.split(",");
     int max = 0;
@@ -43,6 +62,10 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return max;
   }
 
+  /**
+   * rotate the patch 90°
+   * @return (Patch) the patch rotated
+   */
   public Patch rotatePiece() {
     var newFormat = new StringBuilder();
     var lines = format.split(",");
@@ -60,6 +83,10 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return new Patch(newFormat.toString(), price, forwardBlocks, earnings);
   }
 
+  /**
+   * flip the patch horizontally
+   * @return (Patch) the patch flipped
+   */
   public Patch flipPiece() {
     var newFormat = new StringBuilder();
     var lines = format.split(",");

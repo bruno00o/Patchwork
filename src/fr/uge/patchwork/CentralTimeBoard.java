@@ -7,11 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+/**
+ * The central time board of the game.
+ * Use this class to init the game.
+ * To finish the game, reach the end of the time board.
+ *
+ * @author Seilliebert Bruno & Oeuvrard Dilien
+ */
 public class CentralTimeBoard {
   private final int size;
   private final ArrayList<CentralTimeBoardCase> centralTimeBoard;
   private final boolean isBasic;
 
+  /**
+   * Init the central time board.
+   *
+   * @param isBasic (boolean) true if the game is in basic mode, false if it's in advanced mode.
+   */
   public CentralTimeBoard(boolean isBasic) {
     this.size = 59;
     this.centralTimeBoard = new ArrayList<>(size);
@@ -21,6 +34,15 @@ public class CentralTimeBoard {
     }
   }
 
+  /**
+   * load the central time board from a file
+   * with * for leather patch
+   * and x for button gift
+   *
+   * @param path    (Path) the path of the file
+   * @param players (List<Player>) the list of players
+   * @throws IOException if the file is not found
+   */
   public void load(Path path, List<Player> players) throws IOException {
     Objects.requireNonNull(path);
     try (var reader = Files.newBufferedReader(path)) {
@@ -45,6 +67,12 @@ public class CentralTimeBoard {
     }
   }
 
+  /**
+   * Show the score for each player at the end of the game.
+   * And who is the winner.
+   *
+   * @return true if the winner is player 1
+   */
   public boolean theWinnerIs(Player player1, Player player2) {
     if (player1.getSpecialTile() != null && player2.getSpecialTile() != null) {
       var playerGetSpecial = player1.hasSpecialTile() ? player1 : player2;
@@ -56,6 +84,14 @@ public class CentralTimeBoard {
     return player1.getScore() > player2.getScore();
   }
 
+  /**
+   * Call to know if the game is finish.
+   *
+   * @param player1       (Player) the first player.
+   * @param player2       (Player) the second player.
+   * @param circlePatches (List<Patch>) the list of the circle patches.
+   * @return true if game is finish.
+   */
   public boolean gameIsOver(Player player1, Player player2, CirclePatches circlePatches) {
     if (player1.getPosition() >= size && player2.getPosition() >= size) {
       return theWinnerIs(player1, player2);
@@ -66,6 +102,13 @@ public class CentralTimeBoard {
     return false;
   }
 
+  /**
+   * To know who it is to play
+   *
+   * @param player1 (Player) the first player.
+   * @param player2 (Player) the second player.
+   * @return the player who it is to play
+   */
   public Player whoPlays(Player player1, Player player2) {
     if (player1.getTimeToken().position() < player2.getTimeToken().position()) {
       return player1;
@@ -73,6 +116,12 @@ public class CentralTimeBoard {
     return player2;
   }
 
+  /**
+   * When you passed your turn
+   *
+   * @param actual (Player) the player who passed his turn
+   * @param other  (Player) the other player
+   */
   public void passedTurn(Player actual, Player other) {
     var to = other.getPosition() >= size ? 0 : 1;
     if (actual.getPosition() <= other.getPosition()) {
@@ -82,6 +131,11 @@ public class CentralTimeBoard {
     }
   }
 
+  /**
+   * When you want to move your token.
+   *
+   * @param player (Player) the player who want to move his token.
+   */
   public void moveTimeToken(Player player) {
     var timeToken = player.getTimeToken();
     var position = timeToken.position();
@@ -114,11 +168,10 @@ public class CentralTimeBoard {
         player.placePatch(patch, coordinates);
         caseOfTimeToken.removeLeatherPatch();
       }
-    }
-    if (centralTimeBoardCase.hasButton()) {
-      System.out.println("You have found a button");
-      player.addMoney(1);
-      centralTimeBoardCase.removeButton();
+      if (caseOfTimeToken.hasButton()) {
+        System.out.println("You have found a button");
+        player.addMoney(player.getEarnings());
+      }
     }
   }
 

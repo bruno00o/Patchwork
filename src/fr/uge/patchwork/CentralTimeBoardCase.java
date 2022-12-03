@@ -12,7 +12,7 @@ import java.util.Objects;
 public class CentralTimeBoardCase {
   private final List<TimeToken> timeTokens;
   private Patch leatherPatch;
-  private int button;
+  private final int button;
   public CentralTimeBoardCase(List<TimeToken> timeTokens, Patch leatherPatch, int button) {
     this.timeTokens = timeTokens;
     this.leatherPatch = leatherPatch;
@@ -48,25 +48,38 @@ public class CentralTimeBoardCase {
     timeTokens.stream().filter(t -> t.shortName() == timeToken.shortName()).findFirst().ifPresent(timeTokens::remove);
     return this;
   }
+
+  /**
+   * Check if the case has a button
+   * @return true if the case has a button
+   */
   public boolean hasButton() {
     return button > 0;
   }
 
+  /**
+   * Check if the case has a leather patch
+   * @return true if the case has a leather patch
+   */
   public boolean hasLeatherPatch() {
     return leatherPatch != null;
   }
 
+  /**
+   * Get a leather patch from the case
+   * @return (Patch) the leather patch
+   */
   public Patch getLeatherPatch() {
     return leatherPatch;
   }
 
+  /**
+   * Remove a leather patch from the case
+   */
   public void removeLeatherPatch() {
     leatherPatch = null;
   }
 
-  public void removeButton() {
-    button = 0;
-  }
 
   @Override
   public String toString() {

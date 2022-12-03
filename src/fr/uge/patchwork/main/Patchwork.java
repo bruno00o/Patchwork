@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * Main class of the game.
+ * Seilliebert Bruno & Oeuvrard Dilien
+ */
 public class Patchwork {
   private final Player player1;
   private final Player player2;
@@ -39,6 +43,11 @@ public class Patchwork {
     this.basicMode = basicMode;
   }
 
+  /**
+   * Load & Shuffle & Place Neutral Token
+   *
+   * @throws IOException if the file is not found
+   */
   public void init() throws IOException {
     if (basicMode) {
       circlePatches.load(Path.of("src/fr/uge/patchwork/resources/basic_circle_patches.txt"));
@@ -50,6 +59,11 @@ public class Patchwork {
     centralTimeBoard.load(Path.of("src/fr/uge/patchwork/resources/board.txt"), List.of(player1, player2));
   }
 
+  /**
+   * To know who start the game.
+   *
+   * @return (Player) the player who start the game
+   */
   public Player whoStarts() {
     var reader = new Scanner(System.in);
     System.out.println("Player 1: When was the last time you used a needle? (dd/mm/yyyy)");

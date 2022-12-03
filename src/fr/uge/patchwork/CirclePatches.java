@@ -11,15 +11,29 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Class of the list of patches
+ *
+ * @author Seilliebert Bruno & Oeuvrard Dilien
+ */
 public class CirclePatches {
   private final ArrayList<Patch> patches;
   private int neutralToken;
 
+  /**
+   * Init the CirclePatches
+   */
   public CirclePatches() {
     this.patches = new ArrayList<>();
     this.neutralToken = 0;
   }
 
+  /**
+   * Load the patches from a directory
+   *
+   * @param path (Path) the path of the directory
+   * @throws IOException (IOException) if the directory doesn't exist
+   */
   public void load(Path path) throws IOException {
     Objects.requireNonNull(path);
     try (var reader = Files.newBufferedReader(path)) {
@@ -32,10 +46,19 @@ public class CirclePatches {
     }
   }
 
+  /**
+   * shuffle the patches when the game is started
+   */
   public void shuffle() {
     Collections.shuffle(patches);
   }
 
+
+  /**
+   * get the smallest patch of the list
+   *
+   * @return (int
+   */
   private int smallestPatchIndex() {
     int smallestIndex = 0;
     for (int i = 1; i < patches.size(); i++) {
@@ -44,10 +67,11 @@ public class CirclePatches {
       }
     }
     return smallestIndex;
-//      int smallestPatch = patches.stream().mapToInt(Patch::getNumberOfBlocks).min().orElseThrow();
-//      return patches.indexOf(patches.stream().filter(patch -> patch.getNumberOfBlocks() == smallestPatch).findFirst().orElseThrow());
   }
 
+  /**
+   * Place the neutral token before the smallest patch
+   */
   public void placeNeutralToken() {
     int smallestPatchIndex = smallestPatchIndex();
     if (smallestPatchIndex == patches.size() - 1) {
@@ -57,6 +81,12 @@ public class CirclePatches {
     }
   }
 
+  /**
+   * get the n next patches of the list
+   *
+   * @param n (int) the number of patches to get
+   * @return (List < Patch >) the list of patches
+   */
   public List<Patch> getNextPatches(int n) {
     var limit = n;
     if (n > patches.size()) {
@@ -67,6 +97,12 @@ public class CirclePatches {
             .collect(Collectors.toList());
   }
 
+  /**
+   * get the maximum height of the patch
+   *
+   * @param patches (List<Patch>) the list of patches
+   * @return (int) the maximum height
+   */
   public static int getMaxHeight(List<Patch> patches) {
     return patches.stream().mapToInt(Patch::getHeight).max().orElseThrow();
   }
@@ -154,6 +190,12 @@ public class CirclePatches {
     return sb.toString();
   }
 
+  /**
+   * display the 3 nest patches of the list of patches
+   *
+   * @param numberOfPatches (int) the number of patches to display
+   * @return (String) the string of the patches
+   */
   public String displayNextPatches(int numberOfPatches) {
     StringBuilder sb = new StringBuilder();
     if (numberOfPatches > patches.size()) {
@@ -168,14 +210,29 @@ public class CirclePatches {
     return sb.toString();
   }
 
+  /**
+   * remove a patch.
+   *
+   * @param patch (Patch) the patch to remove
+   */
   public void removePatch(Patch patch) {
     patches.remove(patch);
   }
 
+  /**
+   * get the size of the list of patches
+   *
+   * @return (int) the size of the list
+   */
   public int size() {
     return patches.size();
   }
 
+  /**
+   * to know if the list is empty
+   *
+   * @return (boolean) true if the list is empty
+   */
   public boolean isEmpty() {
     return patches.isEmpty();
   }
