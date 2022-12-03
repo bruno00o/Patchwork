@@ -28,7 +28,7 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
   }
 
   public String getFormatLine(int line) {
-    var lines = format.split(",");
+    var lines = format.replace(".", " ").split(",");
     return lines[line];
   }
 
@@ -78,6 +78,10 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return new Patch(newFormat.toString(), price, forwardBlocks, earnings);
   }
 
+  /**
+   * Get height of the patch
+   * @return the number of lines in the format
+   */
   public int getHeight() {
     return format.split(",").length;
   }
@@ -86,7 +90,7 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("Price: ").append(price).append(", Earnings: ").append(earnings).append(", Forward blocks: ").append(forwardBlocks).append("\nFormat:\n");
-    var lines = format.split(",");
+    var lines = format.replace(".", " ").split(",");
     for (var line : lines) {
       sb.append(line).append("\n");
     }

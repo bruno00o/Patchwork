@@ -12,11 +12,18 @@ public class Player {
   private final QuiltBoard quiltBoard;
   private final char shortName;
   private TimeToken timeToken;
-
   private int earnings;
   private int money;
+  private final SpecialTile specialTile;
 
-  public Player(String name, int money) {
+  /**
+   * Init a player
+   *
+   * @param name        (String) name of the player
+   * @param money       (int) money of the player
+   * @param specialTile (SpecialTile) special tile of the player
+   */
+  public Player(String name, int money, SpecialTile specialTile) {
     Objects.requireNonNull(name);
     if (money < 0) {
       throw new IllegalArgumentException("Money must be positive");
@@ -27,6 +34,7 @@ public class Player {
     this.timeToken = new TimeToken(0, 0, shortName);
     this.earnings = 0;
     this.money = money;
+    this.specialTile = specialTile;
   }
 
   public int getMoney() {
@@ -50,8 +58,13 @@ public class Player {
     timeToken = new TimeToken(position, oldPosition, shortName);
   }
 
-  public QuiltBoard getQuiltBoard() {
-    return quiltBoard;
+  /**
+   * get the player's earnings
+   *
+   * @return (int) earnings of the player
+   */
+  public int getEarnings() {
+    return earnings;
   }
 
   public static int[] askCoordinates() {
@@ -87,11 +100,34 @@ public class Player {
     return patch;
   }
 
+  /**
+   * Check if the player can place the patch
+   *
+   * @param patch       (Patch) patch to place
+   * @param coordinates (int[]) coordinates of the patch
+   */
+  public void placePatch(Patch patch, int[] coordinates) {
+    while (!quiltBoard.addPatch(patch, coordinates[0], coordinates[1])) {
+      System.out.println("You can't place the patch here");
+      coordinates = askCoordinates();
+    }
+    if (specialTile != null && quiltBoard.containsSquare(specialTile.getSize()) && specialTile.isFree()) {
+      System.out.println("You've completed a square of " + specialTile.getSize() + "!");
+      specialTile.setPlayer(this);
+    }
+  }
+
+  /**
+   * When the player bought a patch, stats are updated
+   *
+   * @param patchToBuy    (Patch) patch bought
+   * @param circlePatches (CirclePatches) circle of patches
+   */
   private void patchBought(Patch patchToBuy, CirclePatches circlePatches) {
     System.out.println("You bought a patch");
     this.timeToken = this.timeToken.forward(patchToBuy.forwardBlocks());
-    this.money += patchToBuy.price();
-    this.earnings = patchToBuy.earnings();
+    this.money -= patchToBuy.price();
+    this.earnings += patchToBuy.earnings();
     circlePatches.removePatch(patchToBuy);
   }
 
@@ -110,31 +146,7 @@ public class Player {
     if (circlePatches.size() < nbPatch) {
       nbPatch = circlePatches.size();
     }
-
-    System.out.println("Enter the patch you want to buy (1 to " + nbPatch + "): ");
-    var pattern = Pattern.compile(" *\\d+ *");
-    var patch = scanner.nextLine();
-    List<Patch> patches = circlePatches.getNextPatches(nbPatch);
-    if (!pattern.matcher(patch).matches()) {
-      return buyAgain(circlePatches, nbPatch);
-    }
-    var chosen = Integer.parseInt(patch);
-    if(chosen > nbPatch || chosen < 1){
-      return buyAgain(circlePatches, nbPatch);
-    }
-    var patchToBuy = patches.get(chosen - 1);
-    if (patchToBuy.price() > money) {
-      System.out.println("You don't have enough money");
-      return false;
-    }
-    patchToBuy = askRotation(patchToBuy);
-    int[] coordinates = askCoordinates();
-    if (quiltBoard.addPatch(patchToBuy, coordinates[0], coordinates[1])) {
-      patchBought(patchToBuy, circlePatches);
-      return true;
-    }
-    System.out.println("Invalid coordinates");
-    return false;
+    return askToBuy(nbPatch, circlePatches);
   }
 
   public boolean chooseAction(CirclePatches circlePatches, int nbPatch) {
@@ -166,6 +178,29 @@ public class Player {
     return timeToken;
   }
 
+  /**
+   * If the player has a special tile
+   *
+   * @return (boolean) true if the player has a special tile, false otherwise
+   */
+  public boolean hasSpecialTile() {
+    return specialTile.getPlayer() == this;
+  }
+
+  /**
+   * get the special tile of the player
+   *
+   * @return (SpecialTile) special tile
+   */
+  public SpecialTile getSpecialTile() {
+    return specialTile;
+  }
+
+  /**
+   * get the player's score
+   *
+   * @return (int) score
+   */
   public int getScore() {
     return money - quiltBoard.nbEmptyCases() * 2;
   }

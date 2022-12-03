@@ -71,19 +71,20 @@ public class CirclePatches {
     return patches.stream().mapToInt(Patch::getHeight).max().orElseThrow();
   }
 
-  public String displayNextPatches(int numberOfPatches) {
+  public String indexLineString(int numberOfPatches) {
     StringBuilder sb = new StringBuilder();
-    if (numberOfPatches > patches.size()) {
-      numberOfPatches = patches.size();
-    }
-    sb.append("Next " + numberOfPatches + " patches:\n\n");
-    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    sb.append("-".repeat(12 * numberOfPatches + 22)).append("\n");
     sb.append("| Index              |").append(" ".repeat(5));
     for (int i = 0; i < numberOfPatches; i++) {
       sb.append(i + 1).append(" ".repeat(5)).append("|").append(" ".repeat(5));
     }
     sb.append("\n");
-    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    sb.append("-".repeat(12 * numberOfPatches + 22)).append("\n");
+    return sb.toString();
+  }
+
+  public String priceLineString(int numberOfPatches) {
+    StringBuilder sb = new StringBuilder();
     sb.append("| Price              |").append(" ".repeat(5));
     for (var patch : getNextPatches(numberOfPatches)) {
       sb.append(patch.price());
@@ -94,17 +95,42 @@ public class CirclePatches {
       }
     }
     sb.append("\n");
+    return sb.toString();
+  }
+
+  public String blocksLineString(int numberOfPatches) {
+    StringBuilder sb = new StringBuilder();
     sb.append("| Number of blocks   |").append(" ".repeat(5));
     for (var patch : getNextPatches(numberOfPatches)) {
-      sb.append(patch.forwardBlocks()).append(" ".repeat(5)).append("|").append(" ".repeat(5));
+      sb.append(patch.getNumberOfBlocks());
+      if (patch.getNumberOfBlocks() < 10) {
+        sb.append(" ".repeat(5)).append("|").append(" ".repeat(5));
+      } else {
+        sb.append(" ".repeat(4)).append("|").append(" ".repeat(5));
+      }
     }
     sb.append("\n");
+    return sb.toString();
+  }
+
+  public String earningsLineString(int numberOfPatches) {
+    StringBuilder sb = new StringBuilder();
     sb.append("| Earnings           |").append(" ".repeat(5));
     for (var patch : getNextPatches(numberOfPatches)) {
-      sb.append(patch.earnings()).append(" ".repeat(5)).append("|").append(" ".repeat(5));
+      sb.append(patch.earnings());
+      if (patch.earnings() < 10) {
+        sb.append(" ".repeat(5)).append("|").append(" ".repeat(5));
+      } else {
+        sb.append(" ".repeat(4)).append("|").append(" ".repeat(5));
+      }
     }
     sb.append("\n");
-    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    return sb.toString();
+  }
+
+  public String formatLineString(int numberOfPatches) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("-".repeat(12 * numberOfPatches + 22)).append("\n");
     for (int i = 0; i < getMaxHeight(getNextPatches(numberOfPatches)); i++) {
       if (i == 0) {
         sb.append("| Format             |");
@@ -115,8 +141,8 @@ public class CirclePatches {
         var patch = getNextPatches(numberOfPatches).get(j);
         if (i < patch.getHeight()) {
           int spaces = 11 - patch.getFormatLine(i).length();
-          int frontSpaces = spaces / 2;
-          int backSpaces = spaces - frontSpaces;
+          int backSpaces = spaces / 2;
+          int frontSpaces = spaces - backSpaces;
           sb.append(" ".repeat(frontSpaces)).append(patch.getFormatLine(i)).append(" ".repeat(backSpaces)).append("|");
         } else {
           sb.append(" ".repeat(11)).append("|");
@@ -124,7 +150,21 @@ public class CirclePatches {
       }
       sb.append("\n");
     }
-    sb.append("-".repeat(19 * numberOfPatches + 1)).append("\n");
+    sb.append("-".repeat(12 * numberOfPatches + 22)).append("\n");
+    return sb.toString();
+  }
+
+  public String displayNextPatches(int numberOfPatches) {
+    StringBuilder sb = new StringBuilder();
+    if (numberOfPatches > patches.size()) {
+      numberOfPatches = patches.size();
+    }
+    sb.append("Next ").append(numberOfPatches).append(" patches:\n\n");
+    sb.append(indexLineString(numberOfPatches));
+    sb.append(priceLineString(numberOfPatches));
+    sb.append(blocksLineString(numberOfPatches));
+    sb.append(earningsLineString(numberOfPatches));
+    sb.append(formatLineString(numberOfPatches));
     return sb.toString();
   }
 

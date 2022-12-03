@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Patchwork:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Patchwork_jar</output-path>
+    <root id="archive" name="Patchwork.jar">
+      <element id="module-output" name="Patchwork" />
+    </root>
+  </artifact>
+</component>

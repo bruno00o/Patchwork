@@ -10,7 +10,7 @@ import java.util.Objects;
 public class CentralTimeBoard {
   private final int size;
   private final ArrayList<CentralTimeBoardCase> centralTimeBoard;
-  private boolean isBasic;
+  private final boolean isBasic;
 
   public CentralTimeBoard(boolean isBasic) {
     this.size = 59;
@@ -46,13 +46,18 @@ public class CentralTimeBoard {
   }
 
   public boolean theWinnerIs(Player player1, Player player2) {
+    if (player1.getSpecialTile() != null && player2.getSpecialTile() != null) {
+      var playerGetSpecial = player1.hasSpecialTile() ? player1 : player2;
+      var specialTile = playerGetSpecial.getSpecialTile();
+      playerGetSpecial.addMoney(specialTile.getEarnings());
+    }
     System.out.println("Player 1: " + player1.getScore() + "\nPlayer 2: " + player2.getScore() + "\n");
     System.out.println("The winner is: " + (player1.getScore() > player2.getScore() ? "Player 1" : "Player 2"));
     return player1.getScore() > player2.getScore();
   }
 
   public boolean gameIsOver(Player player1, Player player2, CirclePatches circlePatches) {
-    if (player1.getTimeToken().position() == size && player2.getTimeToken().position() == size) {
+    if (player1.getPosition() >= size && player2.getPosition() >= size) {
       return theWinnerIs(player1, player2);
     }
     if (circlePatches.isEmpty()) {
@@ -69,10 +74,11 @@ public class CentralTimeBoard {
   }
 
   public void passedTurn(Player actual, Player other) {
+    var to = other.getPosition() >= size ? 0 : 1;
     if (actual.getPosition() <= other.getPosition()) {
-      actual.addMoney(other.getPosition() - actual.getPosition() + 1);
-      actual.setPosition(other.getPosition() + 1, actual.getTimeToken().position());
-      action(actual, centralTimeBoard.get(actual.getPosition()));
+      actual.addMoney(other.getPosition() - actual.getPosition() + to);
+      actual.setPosition(other.getPosition() + to, actual.getPosition());
+      action(actual);
     }
   }
 
@@ -82,19 +88,31 @@ public class CentralTimeBoard {
     var oldPosition = timeToken.oldPosition();
     var caseOfTimeToken = centralTimeBoard.get(oldPosition);
     centralTimeBoard.set(oldPosition, caseOfTimeToken.removeTimeToken(timeToken));
+    if (position > size) {
+      timeToken = timeToken.setPosition(size - 1);
+      position = size - 1;
+    }
     var newCase = centralTimeBoard.get(position);
     centralTimeBoard.set(position, newCase.addTimeToken(timeToken));
-    action(player, newCase);
+    action(player);
   }
 
-  private void action(Player player, CentralTimeBoardCase centralTimeBoardCase) {
+  /**
+   * When you found a special item on the central time board.
+   * You can found a patch or a button gift
+   *
+   * @param player               (Player) the player who found the item.
+   */
+  private void action(Player player) {
     var timeToken = player.getTimeToken();
-    if (centralTimeBoardCase.hasLeatherPatch()) {
-      System.out.println("You have found a leather patch");
-      var patch = centralTimeBoardCase.getLeatherPatch();
-      int[] coordinates = Player.askCoordinates();
-      if (player.getQuiltBoard().addPatch(patch, coordinates[0], coordinates[1])) {
-        centralTimeBoardCase.removeLeatherPatch();
+    for (int i = timeToken.oldPosition(); i < timeToken.position(); i++) {
+      var caseOfTimeToken = centralTimeBoard.get(i);
+      if (caseOfTimeToken.hasLeatherPatch()) {
+        System.out.println("You have found a leather patch");
+        var patch = caseOfTimeToken.getLeatherPatch();
+        int[] coordinates = Player.askCoordinates();
+        player.placePatch(patch, coordinates);
+        caseOfTimeToken.removeLeatherPatch();
       }
     }
     if (centralTimeBoardCase.hasButton()) {

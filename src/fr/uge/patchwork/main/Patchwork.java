@@ -3,6 +3,7 @@ package fr.uge.patchwork.main;
 import fr.uge.patchwork.CentralTimeBoard;
 import fr.uge.patchwork.CirclePatches;
 import fr.uge.patchwork.Player;
+import fr.uge.patchwork.SpecialTile;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,19 +16,38 @@ public class Patchwork {
   private final Player player2;
   private final CirclePatches circlePatches;
   private final CentralTimeBoard centralTimeBoard;
+  private final SpecialTile specialTile;
+  private final boolean basicMode;
 
+  /**
+   * Init the game.
+   *
+   * @param player1Name (String) name of the first player
+   * @param player2Name (String) name of the second player
+   */
   public Patchwork(String player1Name, String player2Name) {
-    this.player1 = new Player(player1Name, 5);
-    this.player2 = new Player(player2Name, 5);
+    System.out.println("Welcome to Patchwork !");
+    System.out.println("Do you want to play in basic mode ? (y/n)");
+    Scanner scanner = new Scanner(System.in);
+    String answer = scanner.nextLine();
+    boolean basicMode = answer.equals("y") || answer.equals("Y");
+    this.specialTile = new SpecialTile(7, 7, null);
+    this.player1 = new Player(player1Name, 5, basicMode ? null : specialTile);
+    this.player2 = new Player(player2Name, 5, basicMode ? null : specialTile);
     this.circlePatches = new CirclePatches();
-    this.centralTimeBoard = new CentralTimeBoard(false);
+    this.centralTimeBoard = new CentralTimeBoard(basicMode);
+    this.basicMode = basicMode;
   }
 
   public void init() throws IOException {
-    circlePatches.load(Path.of("pieces/pieces.txt"));
+    if (basicMode) {
+      circlePatches.load(Path.of("src/fr/uge/patchwork/resources/basic_circle_patches.txt"));
+    } else {
+      circlePatches.load(Path.of("src/fr/uge/patchwork/resources/advanced_circle_patches.txt"));
+    }
     circlePatches.shuffle();
     circlePatches.placeNeutralToken();
-    centralTimeBoard.load(Path.of("boards/board1.txt"), List.of(player1, player2));
+    centralTimeBoard.load(Path.of("src/fr/uge/patchwork/resources/board.txt"), List.of(player1, player2));
   }
 
   public Player whoStarts() {
@@ -64,7 +84,7 @@ public class Patchwork {
       System.out.println("Your board:\n");
       System.out.println(player.getBoard());
       System.out.println(circlePatches.displayNextPatches(3));
-      if (!player.chooseAction(circlePatches, 3)){
+      if (!player.chooseAction(circlePatches, 3)) {
         centralTimeBoard.passedTurn(player, player == player1 ? player2 : player1);
       }
       centralTimeBoard.moveTimeToken(player);

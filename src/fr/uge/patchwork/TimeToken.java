@@ -14,4 +14,14 @@ public record TimeToken(int position, int oldPosition, char shortName) {
   public TimeToken forward(int nbBlocks) {
     return new TimeToken(position + nbBlocks, position, shortName);
   }
+
+  /**
+   * Set position of time token
+   *
+   * @param position (int) new position
+   * @return (TimeToken) new TimeToken with the new position
+   */
+  public TimeToken setPosition(int position) {
+    return new TimeToken(position, position, shortName);
+  }
 }
