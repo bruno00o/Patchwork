@@ -86,7 +86,7 @@ public class Patchwork {
   }
 
   public void start() {
-    var player = player1;
+    var player = whoStarts();
     System.out.println("\n" + player.getName() + " starts!\n");
     do {
       System.out.println("Central board:");

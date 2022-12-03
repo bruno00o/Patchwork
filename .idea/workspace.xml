@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="presque finished">
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/3.tree" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoardCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoardCase.class" afterDir="false" />
@@ -21,46 +20,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/TimeToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/TimeToken.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Patchwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Patchwork.class" afterDir="false" />
     </list>
-    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_12_2022_14_56_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_12_2022_14_56__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.location" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/javaLikeNames.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.m2e.logback.configuration/0.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.2.0.0.20220705-1221.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.oomph.setup/workspace.setup" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.tips.ide/dialog_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.intro/introstate" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metadata/version.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patchwork.eml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Patchwork.userlibraries" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
-    </list>
+    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,7 +145,7 @@
       <workItem from="1669924349080" duration="7670000" />
       <workItem from="1670013890181" duration="8481000" />
       <workItem from="1670069420383" duration="15753000" />
-      <workItem from="1670094827578" duration="8080000" />
+      <workItem from="1670094827578" duration="10130000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -257,7 +217,28 @@
       <option name="project" value="LOCAL" />
       <updated>1670106280698</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="presque finished">
+      <created>1670106697119</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670106697119</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changes by dilie">
+      <created>1670106749007</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670106749007</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changes by dilie">
+      <created>1670106759721</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670106759721</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
