@@ -1,0 +1,269 @@
+Index: pieces/patches.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>2:2:0:***\r\n2:3:0:***, * ,***\r\n2:1:0: * ,** , **, *\r\n2:2:0:**,**, *\r\n1:2:0:**,* ,**\r\n2:1:0:**\r\n1:3:0:**, *\r\n1:2:0: **, * , * ,**\r\n4:2:0:*** , ***\r\n2:2:0:***, *\r\n3:1:0: *,**\r\n3:4:1:* ,* ,**,*\r\n0:3:1:  * ,****,  *\r\n1:4:1:  *  ,*****, *\r\n3:2:1: *,**,*\r\n5:3:1: * ,***,***, *\r\n4:2:1:* ,* ,**\r\n1:5:1:*  *,****\r\n7:1:1:*****\r\n3:3:1:****\r\n10:3:2:* ,* ,* ,**\r\n7:2:2:*   ,****,*\r\n5:4:2: * ,***, *\r\n2:3:1: ***,**\r\n5:5:2:  *,***,  *\r\n3:6:2:** , **,**\r\n10:5:3:**,**, *, *\r\n7:4:2:* ,**,**,*\r\n6:5:2:**,**\r\n7:6:3:** , **\r\n8:6:3:  *,***,**\r\n10:4:3:  *, **,**\r\n4:6:2:  *,***
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pieces/patches.txt b/pieces/patches.txt
+--- a/pieces/patches.txt	(revision d82addfa5e3703a41d1b47ec5ae18395109496cd)
++++ b/pieces/patches.txt	(date 1670075804573)
+@@ -1,33 +1,33 @@
+ 2:2:0:***
+-2:3:0:***, * ,***
+-2:1:0: * ,** , **, *
+-2:2:0:**,**, *
+-1:2:0:**,* ,**
++2:3:0:***,.*.,***
++2:1:0:.*.,**.,.**,.*.
++2:2:0:**,**,.*
++1:2:0:**,*.,**
+ 2:1:0:**
+-1:3:0:**, *
+-1:2:0: **, * , * ,**
+-4:2:0:*** , ***
+-2:2:0:***, *
+-3:1:0: *,**
+-3:4:1:* ,* ,**,*
+-0:3:1:  * ,****,  *
+-1:4:1:  *  ,*****, *
+-3:2:1: *,**,*
+-5:3:1: * ,***,***, *
+-4:2:1:* ,* ,**
+-1:5:1:*  *,****
++1:3:0:**,.*
++1:2:0:.**,.*.,.*.,**.
++4:2:0:***.,.***
++2:2:0:***,.*.
++3:1:0:.*,**
++3:4:1:*.,*.,**,*.
++0:3:1:..*.,****,..*.
++1:4:1:..*..,*****,..*..
++3:2:1:.*,**,*.
++5:3:1:.*.,***,***,.*.
++4:2:1:*.,*.,**
++1:5:1:*..*,****
+ 7:1:1:*****
+ 3:3:1:****
+-10:3:2:* ,* ,* ,**
+-7:2:2:*   ,****,*
+-5:4:2: * ,***, *
+-2:3:1: ***,**
+-5:5:2:  *,***,  *
+-3:6:2:** , **,**
+-10:5:3:**,**, *, *
+-7:4:2:* ,**,**,*
++10:3:2:*.,*.,*.,**
++7:2:2:*...,****,*...
++5:4:2:.*.,***,.*.
++2:3:1:.***,**..
++5:5:2:..*,***,..*
++3:6:2:**.,.**,**.
++10:5:3:**,**,.*,.*
++7:4:2:*.,**,**,*.
+ 6:5:2:**,**
+-7:6:3:** , **
+-8:6:3:  *,***,**
+-10:4:3:  *, **,**
+-4:6:2:  *,***
+\ No newline at end of file
++7:6:3:**.,.**
++8:6:3:..*,***,**.
++10:4:3:..*,.**,**.
++4:6:2:..*,***
+\ No newline at end of file
+Index: src/fr/uge/patchwork/Patch.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.uge.patchwork;\r\n\r\nimport java.util.Objects;\r\n\r\npublic record Patch(String format, int price, int forwardBlocks, int earnings) {\r\n  public Patch {\r\n    Objects.requireNonNull(format);\r\n    if (price < 0) {\r\n      throw new IllegalArgumentException(\"Price must be positive\");\r\n    }\r\n    if (forwardBlocks < 0) {\r\n      throw new IllegalArgumentException(\"Forward blocks must be positive\");\r\n    }\r\n    if (earnings < 0) {\r\n      throw new IllegalArgumentException(\"Earnings must be positive\");\r\n    }\r\n  }\r\n\r\n  public int getNumberOfBlocks() {\r\n    // count '*' in format use streams\r\n    int count = 0;\r\n    for (int i = 0; i < format.length(); i++) {\r\n      if (format.charAt(i) == '*') {\r\n        count++;\r\n      }\r\n    }\r\n    return count;\r\n  }\r\n\r\n  public String getFormatLine(int line) {\r\n    var lines = format.split(\",\");\r\n    return lines[line];\r\n  }\r\n\r\n  public int getHeight() {\r\n    return format.split(\",\").length;\r\n  }\r\n\r\n  @Override\r\n  public String toString() {\r\n    StringBuilder sb = new StringBuilder();\r\n    sb.append(\"Price: \").append(price).append(\", Earnings: \").append(earnings).append(\", Forward blocks: \").append(forwardBlocks).append(\"\\nFormat:\\n\");\r\n    var lines = format.split(\",\");\r\n    for (var line : lines) {\r\n      sb.append(line).append(\"\\n\");\r\n    }\r\n    return sb.toString();\r\n  }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/fr/uge/patchwork/Patch.java b/src/fr/uge/patchwork/Patch.java
+--- a/src/fr/uge/patchwork/Patch.java	(revision d82addfa5e3703a41d1b47ec5ae18395109496cd)
++++ b/src/fr/uge/patchwork/Patch.java	(date 1670075511752)
+@@ -28,10 +28,14 @@
+   }
+ 
+   public String getFormatLine(int line) {
+-    var lines = format.split(",");
++    var lines = format.replace(".", " ").split(",");
+     return lines[line];
+   }
+ 
++  /**
++   * Get height of the patch
++   * @return the number of lines in the format
++   */
+   public int getHeight() {
+     return format.split(",").length;
+   }
+Index: src/fr/uge/patchwork/CirclePatches.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.uge.patchwork;\r\n\r\nimport java.io.IOException;\r\nimport java.nio.file.Files;\r\nimport java.nio.file.Path;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.List;\r\nimport java.util.Objects;\r\nimport java.util.stream.Collectors;\r\nimport java.util.stream.Stream;\r\n\r\npublic class CirclePatches {\r\n  private final ArrayList<Patch> patches;\r\n  private int neutralToken;\r\n\r\n  public CirclePatches() {\r\n    this.patches = new ArrayList<>();\r\n    this.neutralToken = 0;\r\n  }\r\n\r\n  public void load(Path path) throws IOException {\r\n    Objects.requireNonNull(path);\r\n    try (var reader = Files.newBufferedReader(path)) {\r\n      String line;\r\n      while ((line = reader.readLine()) != null) {\r\n        var tokens = line.split(\":\");\r\n        var patch = new Patch(tokens[3], Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]));\r\n        patches.add(patch);\r\n      }\r\n    }\r\n  }\r\n\r\n  public void shuffle() {\r\n    Collections.shuffle(patches);\r\n  }\r\n\r\n  private int smallestPatchIndex() {\r\n    int smallestIndex = 0;\r\n    for (int i = 1; i < patches.size(); i++) {\r\n      if (patches.get(i).getNumberOfBlocks() < patches.get(smallestIndex).getNumberOfBlocks()) {\r\n        smallestIndex = i;\r\n      }\r\n    }\r\n    return smallestIndex;\r\n//      int smallestPatch = patches.stream().mapToInt(Patch::getNumberOfBlocks).min().orElseThrow();\r\n//      return patches.indexOf(patches.stream().filter(patch -> patch.getNumberOfBlocks() == smallestPatch).findFirst().orElseThrow());\r\n  }\r\n\r\n  public void placeNeutralToken() {\r\n    int smallestPatchIndex = smallestPatchIndex();\r\n    if (smallestPatchIndex == patches.size() - 1) {\r\n      neutralToken = 0;\r\n    } else {\r\n      neutralToken = smallestPatchIndex + 1;\r\n    }\r\n  }\r\n\r\n  public List<Patch> getNextPatches(int n) {\r\n    var limit = n;\r\n    if (n > patches.size()) {\r\n      limit = patches.size();\r\n    }\r\n    return Stream.concat(patches.stream().skip(neutralToken), patches.stream().limit(neutralToken + 1))\r\n            .limit(limit)\r\n            .collect(Collectors.toList());\r\n  }\r\n\r\n  public static int getMaxHeight(List<Patch> patches) {\r\n    return patches.stream().mapToInt(Patch::getHeight).max().orElseThrow();\r\n  }\r\n\r\n  public String displayNextPatches(int numberOfPatches) {\r\n    StringBuilder sb = new StringBuilder();\r\n    if (numberOfPatches > patches.size()) {\r\n      numberOfPatches = patches.size();\r\n    }\r\n    sb.append(\"Next \" + numberOfPatches + \" patches:\\n\\n\");\r\n    sb.append(\"-\".repeat(19 * numberOfPatches + 1)).append(\"\\n\");\r\n    sb.append(\"| Index              |\").append(\" \".repeat(5));\r\n    for (int i = 0; i < numberOfPatches; i++) {\r\n      sb.append(i + 1).append(\" \".repeat(5)).append(\"|\").append(\" \".repeat(5));\r\n    }\r\n    sb.append(\"\\n\");\r\n    sb.append(\"-\".repeat(19 * numberOfPatches + 1)).append(\"\\n\");\r\n    sb.append(\"| Price              |\").append(\" \".repeat(5));\r\n    for (var patch : getNextPatches(numberOfPatches)) {\r\n      sb.append(patch.price());\r\n      if (patch.price() < 10) {\r\n        sb.append(\" \".repeat(5)).append(\"|\").append(\" \".repeat(5));\r\n      } else {\r\n        sb.append(\" \".repeat(4)).append(\"|\").append(\" \".repeat(5));\r\n      }\r\n    }\r\n    sb.append(\"\\n\");\r\n    sb.append(\"| Number of blocks   |\").append(\" \".repeat(5));\r\n    for (var patch : getNextPatches(numberOfPatches)) {\r\n      sb.append(patch.forwardBlocks()).append(\" \".repeat(5)).append(\"|\").append(\" \".repeat(5));\r\n    }\r\n    sb.append(\"\\n\");\r\n    sb.append(\"| Earnings           |\").append(\" \".repeat(5));\r\n    for (var patch : getNextPatches(numberOfPatches)) {\r\n      sb.append(patch.earnings()).append(\" \".repeat(5)).append(\"|\").append(\" \".repeat(5));\r\n    }\r\n    sb.append(\"\\n\");\r\n    sb.append(\"-\".repeat(19 * numberOfPatches + 1)).append(\"\\n\");\r\n    for (int i = 0; i < getMaxHeight(getNextPatches(numberOfPatches)); i++) {\r\n      if (i == 0) {\r\n        sb.append(\"| Format             |\");\r\n      } else {\r\n        sb.append(\"|                    |\");\r\n      }\r\n      for (int j = 0; j < numberOfPatches; j++) {\r\n        var patch = getNextPatches(numberOfPatches).get(j);\r\n        if (i < patch.getHeight()) {\r\n          int spaces = 11 - patch.getFormatLine(i).length();\r\n          int frontSpaces = spaces / 2;\r\n          int backSpaces = spaces - frontSpaces;\r\n          sb.append(\" \".repeat(frontSpaces)).append(patch.getFormatLine(i)).append(\" \".repeat(backSpaces)).append(\"|\");\r\n        } else {\r\n          sb.append(\" \".repeat(11)).append(\"|\");\r\n        }\r\n      }\r\n      sb.append(\"\\n\");\r\n    }\r\n    sb.append(\"-\".repeat(19 * numberOfPatches + 1)).append(\"\\n\");\r\n    return sb.toString();\r\n  }\r\n\r\n  public void removePatch(Patch patch) {\r\n    patches.remove(patch);\r\n  }\r\n\r\n  public int size() {\r\n    return patches.size();\r\n  }\r\n\r\n  public boolean isEmpty() {\r\n    return patches.isEmpty();\r\n  }\r\n\r\n  @Override\r\n  public String toString() {\r\n    var sb = new StringBuilder();\r\n    for (var patch : patches) {\r\n      sb.append(patch).append(\"\\n\");\r\n    }\r\n    return sb.toString();\r\n  }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/fr/uge/patchwork/CirclePatches.java b/src/fr/uge/patchwork/CirclePatches.java
+--- a/src/fr/uge/patchwork/CirclePatches.java	(revision d82addfa5e3703a41d1b47ec5ae18395109496cd)
++++ b/src/fr/uge/patchwork/CirclePatches.java	(date 1670075047193)
+@@ -115,8 +115,8 @@
+         var patch = getNextPatches(numberOfPatches).get(j);
+         if (i < patch.getHeight()) {
+           int spaces = 11 - patch.getFormatLine(i).length();
+-          int frontSpaces = spaces / 2;
+-          int backSpaces = spaces - frontSpaces;
++          int backSpaces = spaces / 2;
++          int frontSpaces = spaces - backSpaces;
+           sb.append(" ".repeat(frontSpaces)).append(patch.getFormatLine(i)).append(" ".repeat(backSpaces)).append("|");
+         } else {
+           sb.append(" ".repeat(11)).append("|");
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_19\" default=\"true\" project-jdk-name=\"openjdk-19\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision d82addfa5e3703a41d1b47ec5ae18395109496cd)
++++ b/.idea/misc.xml	(date 1670074363629)
+@@ -1,5 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="JavadocGenerationManager">
++    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/docs" />
++  </component>
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="openjdk-19" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+Index: src/META-INF/MANIFEST.MF
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/META-INF/MANIFEST.MF b/src/META-INF/MANIFEST.MF
+new file mode 100644
+--- /dev/null	(date 1670069662953)
++++ b/src/META-INF/MANIFEST.MF	(date 1670069662953)
+@@ -0,0 +1,3 @@
++Manifest-Version: 1.0
++Main-Class: fr.uge.patchwork.main.Patchwork
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6384adb4-4908-4e41-af5d-69e1acc74760\" name=\"Changes\" comment=\"nice\">\r\n      <change afterPath=\"$PROJECT_DIR$/pieces/patches.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pieces/pieces.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pieces/pieces.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/Player.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/Player.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java\" afterDir=\"false\" />\r\n    </list>\r\n    <list id=\"fd8da820-928d-43b9-ac37-bdca7d554c65\" name=\"Changes by dilie\" comment=\"Changes by dilie\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Record\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2H8AE9mLfAEbH6SFbNLdMyMY8c3\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\r\n    \"last_opened_file_path\": \"C:/Users/Bruno/Desktop\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Bruno\\Desktop\\IntelliJ\\Patchwork\" />\r\n      <recent name=\"C:\\Users\\Bruno\\Desktop\\IntelliJ\\Patchwork\\src\\fr\\uge\\patchwork\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Patchwork\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"$PROJECT_DIR$/../../../../../Program Files/Java/jdk-19\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"Patchwork\" />\r\n      <target name=\"@@@LOCAL@@@\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Patchwork\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"fr.uge.patchwork.main.Patchwork\" />\r\n      <module name=\"Patchwork\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"fr.uge.patchwork.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"fr.uge.patchwork.main.Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"fr.uge.patchwork.main.Main\" />\r\n      <module name=\"Patchwork\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"fr.uge.patchwork.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Patchwork\" />\r\n        <item itemvalue=\"Application.fr.uge.patchwork.main.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6384adb4-4908-4e41-af5d-69e1acc74760\" name=\"Changes\" comment=\"\" />\r\n      <created>1667656224172</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667656224172</updated>\r\n      <workItem from=\"1667656227627\" duration=\"530000\" />\r\n      <workItem from=\"1667656779317\" duration=\"184000\" />\r\n      <workItem from=\"1667656975079\" duration=\"860000\" />\r\n      <workItem from=\"1667657939500\" duration=\"492000\" />\r\n      <workItem from=\"1667658779474\" duration=\"42000\" />\r\n      <workItem from=\"1667658957722\" duration=\"672000\" />\r\n      <workItem from=\"1667666310460\" duration=\"653000\" />\r\n      <workItem from=\"1667667033982\" duration=\"108000\" />\r\n      <workItem from=\"1669828315030\" duration=\"10620000\" />\r\n      <workItem from=\"1669924263166\" duration=\"74000\" />\r\n      <workItem from=\"1669924349080\" duration=\"7670000\" />\r\n      <workItem from=\"1670013890181\" duration=\"8424000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"init project\">\r\n      <created>1667656296174</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1667656296174</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Patchwork\">\r\n      <created>1669833894516</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669833894516</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Patchwork\">\r\n      <created>1669833915118</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669833915118</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Create central board\">\r\n      <created>1669842462817</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669842462817</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"nice\">\r\n      <created>1669933895537</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669933895537</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"nice\">\r\n      <created>1669934063256</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669934063256</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Changes by dilie\">\r\n      <created>1669934072759</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669934072759</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"init project\" />\r\n    <MESSAGE value=\"Patchwork\" />\r\n    <MESSAGE value=\"Create central board\" />\r\n    <MESSAGE value=\"nice\" />\r\n    <MESSAGE value=\"Changes by dilie\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Changes by dilie\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d82addfa5e3703a41d1b47ec5ae18395109496cd)
++++ b/.idea/workspace.xml	(date 1670075471639)
+@@ -1,20 +1,22 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="ArtifactsWorkspaceSettings">
++    <artifacts-to-build>
++      <artifact name="Patchwork:jar" />
++    </artifacts-to-build>
++  </component>
+   <component name="AutoImportSettings">
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="nice">
+-      <change afterPath="$PROJECT_DIR$/pieces/patches.txt" afterDir="false" />
++    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="nice 2">
++      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Patchwork_jar.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pieces/pieces.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/pieces.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/pieces/patches.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pieces/patches.txt" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" afterDir="false" />
+     </list>
+     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
+     <option name="SHOW_DIALOG" value="false" />
+@@ -58,9 +60,9 @@
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
++    "project.structure.last.edited": "Artifacts",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
+     "settings.editor.selected.configurable": "preferences.pluginManager",
+     "vue.rearranger.settings.migration": "true"
+   }
+@@ -134,7 +136,8 @@
+       <workItem from="1669828315030" duration="10620000" />
+       <workItem from="1669924263166" duration="74000" />
+       <workItem from="1669924349080" duration="7670000" />
+-      <workItem from="1670013890181" duration="8424000" />
++      <workItem from="1670013890181" duration="8481000" />
++      <workItem from="1670069420383" duration="2083000" />
+     </task>
+     <task id="LOCAL-00001" summary="init project">
+       <created>1667656296174</created>
+@@ -185,7 +188,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1669934072759</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="nice 2">
++      <created>1670022674017</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1670022674017</updated>
++    </task>
++    <task id="LOCAL-00009" summary="nice 2">
++      <created>1670022702932</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1670022702932</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -208,6 +225,7 @@
+     <MESSAGE value="Create central board" />
+     <MESSAGE value="nice" />
+     <MESSAGE value="Changes by dilie" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Changes by dilie" />
++    <MESSAGE value="nice 2" />
++    <option name="LAST_COMMIT_MESSAGE" value="nice 2" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/artifacts/Patchwork_jar.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/artifacts/Patchwork_jar.xml b/.idea/artifacts/Patchwork_jar.xml
+new file mode 100644
+--- /dev/null	(date 1670069674701)
++++ b/.idea/artifacts/Patchwork_jar.xml	(date 1670069674701)
+@@ -0,0 +1,8 @@
++<component name="ArtifactManager">
++  <artifact type="jar" name="Patchwork:jar">
++    <output-path>$PROJECT_DIR$/out/artifacts/Patchwork_jar</output-path>
++    <root id="archive" name="Patchwork.jar">
++      <element id="module-output" name="Patchwork" />
++    </root>
++  </artifact>
++</component>
+\ No newline at end of file
