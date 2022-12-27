@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Patchwork:jar" />
+      <artifact name="Patchwork:jar2" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,15 +10,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="presque finished">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Patchwork_jar2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/display/Display.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/display/GUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/CentralBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/CentralBoardSquare.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/CirclePatches.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/Patch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltSquare.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/SpecialTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/TimeToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/basic_board.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/basic_circle_patches.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/complete_board.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/complete_circle_patches.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/main/AdvancedGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/main/BasicGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/game/main/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/main/Patchwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_12_2022_14_56_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_12_2022_14_56__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_20_47_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_20_47__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoardCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoardCase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CirclePatches.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CirclePatches.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Patch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Patch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/QuiltBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/QuiltBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/TimeToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/TimeToken.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Patchwork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Patchwork.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoardCase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CirclePatches.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Patch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/QuiltBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/TimeToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Patchwork.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/SpecialTile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/resources/advanced_circle_patches.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/resources/basic_circle_patches.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/resources/board.txt" beforeDir="false" />
     </list>
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +69,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Record" />
         <option value="Class" />
       </list>
@@ -61,11 +102,12 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop/IntelliJ/Patchwork/src/patchwork/game/ressources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -74,13 +116,16 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\patchwork\game\ressources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\fr\uge\patchwork\resources" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\fr\uge\patchwork" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Patchwork">
+  <component name="RunManager" selected="Application.patchwork.main.Patchwork">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../Program Files/Java/jdk-19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -117,8 +162,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="patchwork.main.Patchwork" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patchwork.main.Patchwork" />
+      <module name="Patchwork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patchwork.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="patchwork.main.Patchwork" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="patchwork.main.Patchwork" />
+      <module name="Patchwork" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="patchwork.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.patchwork.main.Patchwork" />
+        <item itemvalue="Application.patchwork.main.Patchwork" />
         <item itemvalue="Application.Patchwork" />
         <item itemvalue="Application.fr.uge.patchwork.main.Main" />
       </list>
@@ -145,7 +218,11 @@
       <workItem from="1669924349080" duration="7670000" />
       <workItem from="1670013890181" duration="8481000" />
       <workItem from="1670069420383" duration="15753000" />
-      <workItem from="1670094827578" duration="10130000" />
+      <workItem from="1670094827578" duration="11407000" />
+      <workItem from="1670683142584" duration="86000" />
+      <workItem from="1671882607797" duration="11785000" />
+      <workItem from="1672047647642" duration="14697000" />
+      <workItem from="1672130350787" duration="18400000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -238,7 +315,21 @@
       <option name="project" value="LOCAL" />
       <updated>1670106759721</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="presque finished">
+      <created>1670108887265</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670108887265</updated>
+    </task>
+    <task id="LOCAL-00015" summary="presque finished">
+      <created>1670108898496</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670108898496</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,8 +352,8 @@
     <MESSAGE value="Create central board" />
     <MESSAGE value="nice" />
     <MESSAGE value="nice 2" />
-    <MESSAGE value="presque finished" />
     <MESSAGE value="Changes by dilie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by dilie" />
+    <MESSAGE value="presque finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="presque finished" />
   </component>
 </project>

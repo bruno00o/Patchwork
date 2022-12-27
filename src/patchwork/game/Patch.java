@@ -1,14 +1,9 @@
-package fr.uge.patchwork;
+package patchwork.game;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Objects;
 
-/**
- * A patchwork is a set of rectangles that can be placed on a grid.
- * @param format (String) the format of the patch
- * @param price (int) the price of the patch
- * @param forwardBlocks (int) the number of blocks in the forward direction
- * @param earnings (int) the earnings of the patch
- */
 public record Patch(String format, int price, int forwardBlocks, int earnings) {
   public Patch {
     Objects.requireNonNull(format);
@@ -25,20 +20,16 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
 
   /**
    * return the number of blocks in the patch.
+   *
    * @return (int) the number of '*' on the patch
    */
   public int getNumberOfBlocks() {
-    int count = 0;
-    for (int i = 0; i < format.length(); i++) {
-      if (format.charAt(i) == '*') {
-        count++;
-      }
-    }
-    return count;
+    return (int) format.chars().filter(c -> c == '*').count();
   }
 
   /**
    * get the format of the patch in a 2D array.
+   *
    * @param line (int) the number of lines of the patch
    * @return (String) the format of the patch
    */
@@ -49,68 +40,78 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
 
   /**
    * Max length of the patch.
+   *
    * @return (int) the max length of the patch
    */
   private int maxLenLinePiece() {
-    var lines = format.split(",");
-    int max = 0;
-    for (var line : lines) {
-      if (line.length() > max) {
-        max = line.length();
-      }
-    }
-    return max;
+    return Arrays.stream(format.split(",")).mapToInt(String::length).max().orElse(0);
   }
 
-  /**
-   * rotate the patch 90°
-   * @return (Patch) the patch rotated
-   */
-  public Patch rotatePiece() {
+  public Patch rotate() {
     var newFormat = new StringBuilder();
     var lines = format.split(",");
     var maxLen = maxLenLinePiece();
     for (int i = 0; i < maxLen; i++) {
-      for (int j = lines.length - 1; j >= 0; j--) {
-        if (i < lines[j].length()) {
-          newFormat.append(lines[j].charAt(i));
-        } else {
-          newFormat.append(' ');
-        }
-      }
+      newFormat.append(getColumn(lines, i));
       newFormat.append(',');
     }
     return new Patch(newFormat.toString(), price, forwardBlocks, earnings);
   }
 
-  /**
-   * flip the patch horizontally
-   * @return (Patch) the patch flipped
-   */
-  public Patch flipPiece() {
+  private String getColumn(String[] lines, int colIndex) {
+    StringBuilder column = new StringBuilder();
+    for (int j = lines.length - 1; j >= 0; j--) {
+      if (colIndex < lines[j].length()) {
+        column.append(lines[j].charAt(colIndex));
+      } else {
+        column.append(' ');
+      }
+    }
+    return column.toString();
+  }
+
+  public Patch flip() {
     var newFormat = new StringBuilder();
     var lines = format.split(",");
     var maxLen = maxLenLinePiece();
     for (int i = 0; i < lines.length; i++) {
-      if (lines[i].length() < maxLen) {
-        for (int j = 0; j < maxLen - lines[i].length(); j++) {
-          newFormat.append(" ");
-        }
-      }
-      for (int j = lines[i].length() - 1; j >= 0; j--) {
-        newFormat.append(lines[i].charAt(j));
-      }
+      newFormat.append(getFlippedLine(lines[i], maxLen));
       newFormat.append(",");
     }
     return new Patch(newFormat.toString(), price, forwardBlocks, earnings);
   }
 
-  /**
-   * Get height of the patch
-   * @return the number of lines in the format
-   */
+  private String getFlippedLine(String line, int maxLen) {
+    StringBuilder flippedLine = new StringBuilder();
+    if (line.length() < maxLen) {
+      for (int j = 0; j < maxLen - line.length(); j++) {
+        flippedLine.append(" ");
+      }
+    }
+    for (int j = line.length() - 1; j >= 0; j--) {
+      flippedLine.append(line.charAt(j));
+    }
+    return flippedLine.toString();
+  }
+
   public int getHeight() {
     return format.split(",").length;
+  }
+
+  public int getWidth() {
+    return maxLenLinePiece();
+  }
+
+  public boolean isSquareFilled(int x, int y) {
+    var lines = format.split(",");
+    if (y >= lines.length) {
+      return false;
+    }
+    var line = lines[y];
+    if (x >= line.length()) {
+      return false;
+    }
+    return line.charAt(x) == '*';
   }
 
   @Override
@@ -124,4 +125,3 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
     return sb.toString();
   }
 }
-
