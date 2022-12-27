@@ -9,57 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="presque finished">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Patchwork_jar2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/display/Display.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/display/GUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/Button.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/CentralBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/CentralBoardSquare.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/CirclePatches.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/Patch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltSquare.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/SpecialTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/TimeToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/basic_board.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/basic_circle_patches.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/complete_board.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/assets/complete_circle_patches.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/main/AdvancedGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/main/BasicGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/game/main/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/patchwork/main/Patchwork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_12_2022_14_56_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_12_2022_14_56__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_20_47_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2022_20_47__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CentralTimeBoardCase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/CirclePatches.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Patch.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/QuiltBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/TimeToken.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Patchwork/fr/uge/patchwork/main/Patchwork.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CentralTimeBoardCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/CirclePatches.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Patch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/QuiltBoard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/SpecialTile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/TimeToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/main/Patchwork.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/resources/advanced_circle_patches.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/resources/basic_circle_patches.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/uge/patchwork/resources/board.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="format all code" />
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +172,7 @@
       <workItem from="1670683142584" duration="86000" />
       <workItem from="1671882607797" duration="11785000" />
       <workItem from="1672047647642" duration="14697000" />
-      <workItem from="1672130350787" duration="18400000" />
+      <workItem from="1672130350787" duration="19119000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -329,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670108898496</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="format all code">
+      <created>1672166509343</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1672166509343</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,6 +311,7 @@
     <MESSAGE value="nice 2" />
     <MESSAGE value="Changes by dilie" />
     <MESSAGE value="presque finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="presque finished" />
+    <MESSAGE value="format all code" />
+    <option name="LAST_COMMIT_MESSAGE" value="format all code" />
   </component>
 </project>
