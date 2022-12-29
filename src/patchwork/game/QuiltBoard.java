@@ -43,7 +43,7 @@ public class QuiltBoard {
     return false;
   }
 
-  private boolean isValidPlacement(Patch patch, int i, int j) {
+  public boolean isValidPlacement(Patch patch, int i, int j) {
     if (i + patch.getHeight() > height || j + patch.getWidth() > width) {
       return false;
     }
@@ -70,10 +70,10 @@ public class QuiltBoard {
     if (!isValidPlacement(patch, x, y)) {
       throw new IllegalArgumentException("Patch can't be added to the quilt board");
     }
-    for (int i = 0; i < patch.getHeight(); i++) {
-      for (int j = 0; j < patch.getWidth(); j++) {
+    for (int i = 0; i <= patch.getHeight(); i++) {
+      for (int j = 0; j <= patch.getWidth(); j++) {
         if (patch.isSquareFilled(i, j)) {
-          quiltBoard.get(x + i).set(y + j, new QuiltSquare(true, patch));
+          quiltBoard.get(x + j).set(y + i, new QuiltSquare(true, patch));
         }
       }
     }

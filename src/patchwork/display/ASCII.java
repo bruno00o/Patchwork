@@ -132,17 +132,23 @@ public record ASCII() implements Display {
     System.out.println(player);
   }
 
-  private static int[] askCoordinates() {
+  private static int[] askCoordinates(Player player, Patch patch) {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter the coordinates of the piece you want to place (x, y)");
     var pattern = Pattern.compile("\\d+, *\\d+");
     var input = scanner.nextLine();
     if (!pattern.matcher(input).matches()) {
       System.out.println("Invalid coordinates");
-      return askCoordinates();
+      return askCoordinates(player, patch);
     }
     var coordinates = input.split(",");
-    return new int[]{Integer.parseInt(coordinates[0].strip()), Integer.parseInt(coordinates[1].strip())};
+    int x = Integer.parseInt(coordinates[0].strip());
+    int y = Integer.parseInt(coordinates[1].strip());
+    if (player.getQuiltBoard().isValidPlacement(patch, x, y)) {
+      return new int[]{x, y};
+    }
+    System.out.println("Invalid coordinates");
+    return askCoordinates(player, patch);
   }
 
   private static Patch askRotation(Patch patch) {
@@ -163,12 +169,10 @@ public record ASCII() implements Display {
         System.out.println("Patch flipped\n" + patch);
         askRotation(patch);
       }
-      case "3" -> {
-        return patch;
-      }
+      case "3" -> {}
       default -> {
         System.out.println("Invalid input");
-        return askRotation(patch);
+        askRotation(patch);
       }
     }
     return patch;
@@ -291,7 +295,7 @@ public record ASCII() implements Display {
         var patch = player.getPatchByChoice(circlePatches, nbPatch, Integer.parseInt(choice));
         player.buyPatch(patch, circlePatches);
         patch = askRotation(patch);
-        int[] coordinates = askCoordinates();
+        int[] coordinates = askCoordinates(player, patch);
         player.placePatch(patch, coordinates[0], coordinates[1]);
         return true;
       }
@@ -315,7 +319,7 @@ public record ASCII() implements Display {
   public void leatherPatchFound(Player player, Patch leatherPatch) {
     System.out.println("You found a leather patch!");
     System.out.println("You can place it on your board for free");
-    var coordinates = askCoordinates();
+    var coordinates = askCoordinates(player, leatherPatch);
     player.placePatch(leatherPatch, coordinates[0], coordinates[1]);
   }
 

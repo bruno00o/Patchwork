@@ -40,6 +40,10 @@ public class Player {
     return timeToken.getPosition();
   }
 
+  public QuiltBoard getQuiltBoard() {
+    return quiltBoard;
+  }
+
   public Patch getPatchByChoice(CirclePatches circlePatches, int nbPatch, int choice) {
     List<Patch> patches = circlePatches.getNextPatches(nbPatch);
     return patches.get(choice - 1);
@@ -86,7 +90,7 @@ public class Player {
     int maxPositionValue = maxPosition.getPosition();
     int position = getPosition();
     if (position < maxPositionValue) {
-      this.timeToken = timeToken.forward(maxPositionValue - position);
+      this.timeToken = timeToken.forward(maxPositionValue - position + 1); // TODO: check if va pas dépasser
     }
     money += maxPositionValue - position;
   }
@@ -109,10 +113,8 @@ public class Player {
 
   @Override
   public String toString() {
-    var sb = new StringBuilder();
-    sb.append(name).append("\n")
-            .append("Money: ").append(money).append("\n")
-            .append("Board:\n").append(quiltBoard);
-    return sb.toString();
+    return name + "\n" +
+            "Money: " + money + "\n" +
+            "Board:\n" + quiltBoard;
   }
 }

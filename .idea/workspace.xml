@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="format all code" />
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="change board">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" afterDir="false" />
+    </list>
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +57,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop/IntelliJ/Patchwork/src/patchwork/game/ressources&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop/IntelliJ/Patchwork/out/artifacts/Patchwork_jar2/src/patchwork/game/assets&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -67,6 +72,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\out\artifacts\Patchwork_jar2\src\patchwork\game\assets" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\patchwork\game\ressources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -172,7 +178,8 @@
       <workItem from="1670683142584" duration="86000" />
       <workItem from="1671882607797" duration="11785000" />
       <workItem from="1672047647642" duration="14697000" />
-      <workItem from="1672130350787" duration="19119000" />
+      <workItem from="1672130350787" duration="19305000" />
+      <workItem from="1672344747731" duration="4339000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -286,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672166509343</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="change board">
+      <created>1672181113405</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1672181113405</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +326,7 @@
     <MESSAGE value="Changes by dilie" />
     <MESSAGE value="presque finished" />
     <MESSAGE value="format all code" />
-    <option name="LAST_COMMIT_MESSAGE" value="format all code" />
+    <MESSAGE value="change board" />
+    <option name="LAST_COMMIT_MESSAGE" value="change board" />
   </component>
 </project>
