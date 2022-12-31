@@ -9,11 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="change board">
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="place patch on quiltboard corrected">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/game/Patch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/Patch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/game/QuiltSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltSquare.java" afterDir="false" />
     </list>
     <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +180,8 @@
       <workItem from="1671882607797" duration="11785000" />
       <workItem from="1672047647642" duration="14697000" />
       <workItem from="1672130350787" duration="19305000" />
-      <workItem from="1672344747731" duration="4339000" />
+      <workItem from="1672344747731" duration="5038000" />
+      <workItem from="1672494520724" duration="5836000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -300,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672181113405</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="place patch on quiltboard corrected">
+      <created>1672350035458</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1672350035458</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -327,6 +336,7 @@
     <MESSAGE value="presque finished" />
     <MESSAGE value="format all code" />
     <MESSAGE value="change board" />
-    <option name="LAST_COMMIT_MESSAGE" value="change board" />
+    <MESSAGE value="place patch on quiltboard corrected" />
+    <option name="LAST_COMMIT_MESSAGE" value="place patch on quiltboard corrected" />
   </component>
 </project>

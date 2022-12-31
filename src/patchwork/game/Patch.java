@@ -104,14 +104,14 @@ public record Patch(String format, int price, int forwardBlocks, int earnings) {
 
   public boolean isSquareFilled(int x, int y) {
     var lines = format.split(",");
-    if (y >= lines.length) {
+    if (x >= lines.length) {
       return false;
     }
-    var line = lines[y];
-    if (x >= line.length()) {
+    var line = lines[x];
+    if (y >= line.length()) {
       return false;
     }
-    return line.charAt(x) == '*';
+    return line.charAt(y) == '*';
   }
 
   @Override

@@ -10,9 +10,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public record ASCII() implements Display {
-
   private static final String ANSI_RESET = " \033[H\033[2J";
-
   private static final String ANSI_BLACK = "\033[0m";
   private static final String ANSI_RED = "\033[31m";
   private static final String ANSI_GREEN = "\033[32m";
@@ -267,6 +265,62 @@ public record ASCII() implements Display {
     System.out.println(formatLineString(circlePatches, nbPatches));
   }
 
+  private static void askPlacement(Player player, Patch patch, int x, int y) {
+    QuiltBoard copyQuiltBoard = player.getQuiltBoard().copy();
+    copyQuiltBoard.addPatch(patch, x, y);
+    clearScreen();
+    System.out.println("Use z, q, s, d to move the patch, r to rotate, f to flip, v to place the patch. Press enter each time to confirm.");
+    System.out.println(copyQuiltBoard);
+    Scanner scanner = new Scanner(System.in);
+    var input = scanner.nextLine();
+    switch (input) {
+      case "r" -> {
+        patch = patch.rotate();
+        askPlacement(player, patch, x, y);
+      }
+      case "f" -> {
+        patch = patch.flip();
+        askPlacement(player, patch, x, y);
+      }
+      case "v" -> {
+        if (copyQuiltBoard.isValidPlacement(patch, x, y)) {
+          player.placePatch(patch, x, y);
+        } else {
+          System.out.println("Invalid placement");
+          askPlacement(player, patch, x, y);
+        }
+      }
+      case "z" -> {
+        if (y > 0) {
+          y--;
+        }
+        askPlacement(player, patch, x, y);
+      }
+      case "q" -> {
+        if (x > 0) {
+          x--;
+        }
+        askPlacement(player, patch, x, y);
+      }
+      case "s" -> {
+        if (y < player.getQuiltBoard().getHeight() - patch.getHeight()) {
+          y++;
+        }
+        askPlacement(player, patch, x, y);
+      }
+      case "d" -> {
+        if (x < player.getQuiltBoard().getWidth() - patch.getWidth()) {
+          x++;
+        }
+        askPlacement(player, patch, x, y);
+      }
+      default -> {
+        System.out.println("Invalid input");
+        askPlacement(player, patch, x, y);
+      }
+    }
+  }
+
   @Override
   public boolean chooseAction(Player player, CirclePatches circlePatches, int nbPatch) {
     var reader = new Scanner(System.in);
@@ -285,7 +339,7 @@ public record ASCII() implements Display {
         }
         String result = null;
         do {
-          System.out.print("Which patch do you want to buy? (1-" + nbPatch + "): ");
+          System.out.print("Which patch do you want to buy? (1-" + nbPatch + "): "); // TODO: ajouter une vérification pour savoir si le joueur peut acheter le patch et aussi un moyen d'annuler l'achat (si pas la flemme)
           choice = reader.nextLine();
           result = player.checkPatchChoice(circlePatches, nbPatch, Integer.parseInt(choice));
           if (result != null) {
@@ -294,9 +348,12 @@ public record ASCII() implements Display {
         } while (result != null);
         var patch = player.getPatchByChoice(circlePatches, nbPatch, Integer.parseInt(choice));
         player.buyPatch(patch, circlePatches);
-        patch = askRotation(patch);
-        int[] coordinates = askCoordinates(player, patch);
-        player.placePatch(patch, coordinates[0], coordinates[1]);
+//        patch = askRotation(patch);
+//        int[] coordinates = askCoordinates(player, patch);
+//        player.placePatch(patch, coordinates[0], coordinates[1]);
+
+        askPlacement(player, patch, 0, 0);
+
         return true;
       }
       case "2" -> {

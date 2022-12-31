@@ -18,4 +18,8 @@ public record QuiltSquare(boolean isFilled, Patch patch) {
     }
     return ".";
   }
+
+  public QuiltSquare copy() {
+    return new QuiltSquare(isFilled, patch);
+  }
 }

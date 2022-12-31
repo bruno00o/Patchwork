@@ -1,6 +1,7 @@
 package patchwork.game;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class QuiltBoard {
@@ -49,7 +50,7 @@ public class QuiltBoard {
     }
     for (int k = 0; k < patch.getHeight(); k++) {
       for (int l = 0; l < patch.getWidth(); l++) {
-        if (patch.isSquareFilled(k, l) && !quiltBoard.get(i + k).get(j + l).isEmpty()) {
+        if (patch.isSquareFilled(k, l) && !quiltBoard.get(j + k).get(i + l).isEmpty()) {
           return false;
         }
       }
@@ -98,16 +99,33 @@ public class QuiltBoard {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append(" \\  0 1 2 3 4 5 6 7 8 y\n");
+    sb.append(" \\  0 1 2 3 4 5 6 7 8\n");
     sb.append("  \\ _ _ _ _ _ _ _ _ _\n");
     for (int i = 0; i < height; i++) {
       sb.append(i).append(" | ");
       for (int j = 0; j < width; j++) {
-        sb.append(quiltBoard.get(i).get(j).toString()).append(" ");
+        sb.append(quiltBoard.get(j).get(i).toString()).append(" ");
       }
       sb.append("\n");
     }
-    sb.append("x\n");
     return sb.toString();
+  }
+
+  public QuiltBoard copy() {
+    QuiltBoard copy = new QuiltBoard(width, height);
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        copy.quiltBoard.get(i).set(j, quiltBoard.get(i).get(j).copy());
+      }
+    }
+    return copy;
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int getWidth() {
+    return width;
   }
 }
