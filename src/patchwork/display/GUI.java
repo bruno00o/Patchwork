@@ -2,12 +2,46 @@ package patchwork.display;
 
 import patchwork.game.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public record GUI() implements Display {
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+
+import fr.umlv.zen5.Application;
+import fr.umlv.zen5.ApplicationContext;
+import fr.umlv.zen5.Event;
+import fr.umlv.zen5.ScreenInfo;
+import fr.umlv.zen5.Event.Action;
+
+public record GUI(ApplicationContext context) implements Display {
+
+  private static final Color BACKGROUND_COLOR = new Color(235, 220, 179);
+  private static final Font TITLE_FONT = new Font("Arial", Font.BOLD, 40);
+  private static final Font TEXT_FONT = new Font("Arial", Font.PLAIN, 20);
+  private static float WIDTH;
+  private static float HEIGHT;
+
   public GUI {
-    // TODO
+    ScreenInfo screenInfo = context.getScreenInfo();
+    WIDTH = screenInfo.getWidth();
+    HEIGHT = screenInfo.getHeight();
+  }
+
+  public static void drawCenteredTitleText(Graphics2D g, String text, float y) {
+    g.setColor(Color.BLACK);
+    FontMetrics metrics = g.getFontMetrics(TITLE_FONT);
+    g.setFont(TITLE_FONT);
+    float x = (WIDTH - metrics.stringWidth(text)) / 2;
+    g.drawString(text, x, y);
+    g.setFont(TEXT_FONT);
+  }
+
+  private static void clearScreen(Graphics2D g) {
+    g.setColor(BACKGROUND_COLOR);
+    g.fillRect(0, 0, (int) WIDTH, (int) HEIGHT);
   }
 
   @Override
@@ -18,8 +52,39 @@ public record GUI() implements Display {
 
   @Override
   public ArrayList<Player> initPlayers(int money) {
-    // TODO
-    return null;
+    ArrayList<Player> players = new ArrayList<>();
+    context.renderFrame(graphics -> {
+      clearScreen(graphics);
+      drawCenteredTitleText(graphics, "Please select the number of players", HEIGHT / 2 - HEIGHT / 4);
+      for (int i = 2; i <= 5; i++) {
+        // Draw the text in a little box from left to right
+        graphics.setColor(Color.WHITE);
+        graphics.fill(new Rectangle2D.Float(WIDTH / 2 - WIDTH / 4 + (i - 2) * WIDTH / 8, HEIGHT / 2 - HEIGHT / 8, WIDTH / 8, HEIGHT / 8));
+        graphics.setColor(Color.BLACK);
+        graphics.draw(new Rectangle2D.Float(WIDTH / 2 - WIDTH / 4 + (i - 2) * WIDTH / 8, HEIGHT / 2 - HEIGHT / 8, WIDTH / 8, HEIGHT / 8));
+        graphics.drawString(Integer.toString(i), WIDTH / 2 - WIDTH / 4 + (i - 2) * WIDTH / 8 + WIDTH / 32, HEIGHT / 2 - HEIGHT / 8 + HEIGHT / 16);
+      }
+    });
+
+    // Wait for the user to select the number of players
+
+    for (; ; ) {
+      Event event = context.pollOrWaitEvent(10);
+      if (event == null) {
+        continue;
+      }
+      if (event.getAction() == Action.POINTER_UP) {
+        Point2D.Float location = event.getLocation();
+        for (int i = 2; i <= 5; i++) {
+          if (location.x > WIDTH / 2 - WIDTH / 4 + (i - 2) * WIDTH / 8 && location.x < WIDTH / 2 - WIDTH / 4 + (i - 1) * WIDTH / 8 && location.y > HEIGHT / 2 - HEIGHT / 8 && location.y < HEIGHT / 2 + HEIGHT / 8) {
+            for (int j = 0; j < i; j++) {
+              players.add(new Player("Player " + (j + 1), (char) (j + 1 + 49), money));
+            }
+            return players;
+          }
+        }
+      }
+    }
   }
 
   @Override
@@ -30,7 +95,13 @@ public record GUI() implements Display {
 
   @Override
   public void displayBoard(CentralBoard centralBoard) {
-    // TODO
+    context.renderFrame(graphics -> {
+      clearScreen(graphics);
+      drawCenteredTitleText(graphics, "Central Board", HEIGHT / 2 - HEIGHT / 4);
+      graphics.setColor(Color.BLACK);
+      graphics.draw(new Rectangle2D.Float(WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 8, WIDTH / 2, HEIGHT / 8));
+      graphics.drawString(centralBoard.toString(), WIDTH / 2 - WIDTH / 4 + WIDTH / 32, HEIGHT / 2 - HEIGHT / 8 + HEIGHT / 16);
+    });
   }
 
   @Override

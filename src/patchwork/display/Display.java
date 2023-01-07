@@ -1,5 +1,7 @@
 package patchwork.display;
 
+import fr.umlv.zen5.Application;
+import fr.umlv.zen5.ApplicationContext;
 import patchwork.game.*;
 import patchwork.game.main.Game;
 
@@ -31,17 +33,4 @@ public sealed interface Display permits ASCII, GUI {
 
   void displayWinner(Player player);
 
-  static Display selectDisplay() {
-    System.out.println("Select display:");
-    System.out.println("1. ASCII");
-    System.out.println("2. GUI");
-    System.out.print("Your choice: ");
-    var reader = new Scanner(System.in);
-    var choice = reader.nextLine();
-    return switch (choice) {
-      case "1" -> new ASCII();
-//      case "2" -> new GUI();
-      default -> selectDisplay();
-    };
-  }
 }

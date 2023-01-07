@@ -9,14 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="place patch on quiltboard corrected">
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="place patch without coords but with zqsd">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/zen5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/zen5.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/ASCII.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/game/Patch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/Patch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/game/QuiltSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/QuiltSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Patchwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Patchwork.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/display/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/Display.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/display/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/main/Patchwork.java" afterDir="false" />
     </list>
-    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie" />
+    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie">
+      <change beforePath="$PROJECT_DIR$/src/patchwork/display/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/GUI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +38,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/patchwork/display/GUI.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="7" end1="8" start2="8" end2="26" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="9" end1="10" start2="27" end2="30" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="11" end1="11" start2="31" end2="45" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="14" end1="16" start2="48" end2="78" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
+        <range start1="20" end1="22" start2="82" end2="115" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,13 +74,13 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop/IntelliJ/Patchwork/out/artifacts/Patchwork_jar2/src/patchwork/game/assets&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bruno/Desktop/IntelliJ/Patchwork/lib/zen5.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -73,6 +89,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\lib" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\out\artifacts\Patchwork_jar2\src\patchwork\game\assets" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\patchwork\game\ressources" />
     </key>
@@ -145,9 +162,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="zen5.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/lib/zen5.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.patchwork.main.Patchwork" />
+        <item itemvalue="JAR Application.zen5.jar" />
         <item itemvalue="Application.patchwork.main.Patchwork" />
         <item itemvalue="Application.Patchwork" />
         <item itemvalue="Application.fr.uge.patchwork.main.Main" />
@@ -181,7 +203,11 @@
       <workItem from="1672047647642" duration="14697000" />
       <workItem from="1672130350787" duration="19305000" />
       <workItem from="1672344747731" duration="5038000" />
-      <workItem from="1672494520724" duration="5836000" />
+      <workItem from="1672494520724" duration="6259000" />
+      <workItem from="1672781879134" duration="843000" />
+      <workItem from="1673045304772" duration="1531000" />
+      <workItem from="1673111973329" duration="80000" />
+      <workItem from="1673112066931" duration="7811000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -309,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672350035458</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="place patch without coords but with zqsd">
+      <created>1672515015184</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1672515015184</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +370,7 @@
     <MESSAGE value="format all code" />
     <MESSAGE value="change board" />
     <MESSAGE value="place patch on quiltboard corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="place patch on quiltboard corrected" />
+    <MESSAGE value="place patch without coords but with zqsd" />
+    <option name="LAST_COMMIT_MESSAGE" value="place patch without coords but with zqsd" />
   </component>
 </project>
