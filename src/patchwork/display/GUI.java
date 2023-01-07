@@ -46,8 +46,36 @@ public record GUI(ApplicationContext context) implements Display {
 
   @Override
   public String askGameMode(List<String> games) {
-    // TODO
-    return null;
+    context.renderFrame(graphics -> {
+      graphics.setColor(BACKGROUND_COLOR);
+      graphics.fill(new Rectangle2D.Float(0, 0, WIDTH, HEIGHT));
+      drawCenteredTitleText(graphics, "Please select a game mode", HEIGHT / 2 - HEIGHT / 4);
+      for (int i = 0; i < games.size(); i++) {
+        // Draw the text in a box
+        graphics.setColor(Color.WHITE);
+        graphics.fill(new Rectangle2D.Float(WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 8 + i * HEIGHT / 8, WIDTH / 2, HEIGHT / 8));
+        graphics.setColor(Color.BLACK);
+        graphics.draw(new Rectangle2D.Float(WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 8 + i * HEIGHT / 8, WIDTH / 2, HEIGHT / 8));
+        graphics.drawString(games.get(i).toUpperCase(), WIDTH / 2 - WIDTH / 4 + WIDTH / 32, HEIGHT / 2 - HEIGHT / 8 + i * HEIGHT / 8 + HEIGHT / 16);
+      }
+    });
+
+// Wait for the user to select a game mode
+
+    for (; ; ) {
+      Event event = context.pollOrWaitEvent(10);
+      if (event == null) {
+        continue;
+      }
+      if (event.getAction() == Action.POINTER_UP) {
+        Point2D.Float location = event.getLocation();
+        for (int i = 0; i < games.size(); i++) {
+          if (location.x > WIDTH / 2 - WIDTH / 4 && location.x < WIDTH / 2 + WIDTH / 4 && location.y > HEIGHT / 2 - HEIGHT / 8 + i * HEIGHT / 8 && location.y < HEIGHT / 2 + HEIGHT / 8 + i * HEIGHT / 8) {
+            return games.get(i);
+          }
+        }
+      }
+    }
   }
 
   @Override
