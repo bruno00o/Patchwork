@@ -37,6 +37,10 @@ public class CentralBoardSquare {
     return !timeTokens.isEmpty();
   }
 
+  public List<TimeToken> getTimeTokens() {
+    return timeTokens;
+  }
+
   public TimeToken getTimeToken(char shortName) {
     return timeTokens.stream().filter(t -> t.shortName() == shortName).findFirst().orElse(null);
   }

@@ -33,6 +33,17 @@ public class CentralBoard {
     }
   }
 
+  public CentralBoardSquare getCentralBoardSquare(int position) {
+    if (position < 0 || position >= centralBoard.size()) {
+      return null;
+    }
+    return centralBoard.get(position);
+  }
+
+  public int getCentralBoardSize() {
+    return centralBoard.size();
+  }
+
   public void initPlayers(List<Player> players) {
     Objects.requireNonNull(players);
     for (var player : players) {

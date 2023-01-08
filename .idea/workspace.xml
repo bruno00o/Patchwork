@@ -9,16 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="place patch without coords but with zqsd">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/zen5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/zen5.jar" afterDir="false" />
+    <list default="true" id="6384adb4-4908-4e41-af5d-69e1acc74760" name="Changes" comment="beginning GUI">
+      <change afterPath="$PROJECT_DIR$/src/patchwork/display/assets/button.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/display/assets/central_board.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/patchwork/display/assets/leather_patch.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Patchwork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Patchwork.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/display/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/Display.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/patchwork/display/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/patchwork/main/Patchwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/main/Patchwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/game/CentralBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/CentralBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/patchwork/game/CentralBoardSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/game/CentralBoardSquare.java" afterDir="false" />
     </list>
-    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="Changes by dilie">
+    <list id="fd8da820-928d-43b9-ac37-bdca7d554c65" name="Changes by dilie" comment="beginning GUI">
       <change beforePath="$PROJECT_DIR$/src/patchwork/display/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/patchwork/display/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,12 +42,20 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/patchwork/display/GUI.java">
       <ranges>
-        <range start1="4" end1="4" start2="4" end2="5" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="7" end1="8" start2="8" end2="26" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="9" end1="10" start2="27" end2="30" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="11" end1="11" start2="31" end2="45" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
-        <range start1="14" end1="16" start2="48" end2="78" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
-        <range start1="20" end1="22" start2="82" end2="115" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="5" end1="5" start2="5" end2="7" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="17" end1="17" start2="19" end2="21" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="25" end1="25" start2="29" end2="33" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="48" end1="48" start2="56" end2="57" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="49" end1="51" start2="58" end2="58" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="52" end1="52" start2="59" end2="61" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="72" end1="73" start2="81" end2="82" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="83" end1="115" start2="92" end2="133" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="122" end1="122" start2="140" end2="147" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="125" end1="125" start2="150" end2="151" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="128" end1="128" start2="154" end2="166" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="129" end1="131" start2="167" end2="251" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="136" end1="137" start2="256" end2="271" changelist="6384adb4-4908-4e41-af5d-69e1acc74760" />
+        <range start1="141" end1="142" start2="275" end2="292" changelist="fd8da820-928d-43b9-ac37-bdca7d554c65" />
       </ranges>
     </file>
   </component>
@@ -94,6 +102,7 @@
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\patchwork\game\ressources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\patchwork\game\assets" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\fr\uge\patchwork\resources" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork" />
       <recent name="C:\Users\Bruno\Desktop\IntelliJ\Patchwork\src\fr\uge\patchwork" />
@@ -207,7 +216,8 @@
       <workItem from="1672781879134" duration="843000" />
       <workItem from="1673045304772" duration="1531000" />
       <workItem from="1673111973329" duration="80000" />
-      <workItem from="1673112066931" duration="7811000" />
+      <workItem from="1673112066931" duration="10898000" />
+      <workItem from="1673171855637" duration="9545000" />
     </task>
     <task id="LOCAL-00001" summary="init project">
       <created>1667656296174</created>
@@ -342,7 +352,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672515015184</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="beginning GUI">
+      <created>1673126561437</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1673126561437</updated>
+    </task>
+    <task id="LOCAL-00021" summary="beginning GUI">
+      <created>1673126810125</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1673126810125</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,6 +395,7 @@
     <MESSAGE value="change board" />
     <MESSAGE value="place patch on quiltboard corrected" />
     <MESSAGE value="place patch without coords but with zqsd" />
-    <option name="LAST_COMMIT_MESSAGE" value="place patch without coords but with zqsd" />
+    <MESSAGE value="beginning GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="beginning GUI" />
   </component>
 </project>
