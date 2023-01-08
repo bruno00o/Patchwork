@@ -273,7 +273,23 @@ public record GUI(ApplicationContext context) implements Display {
 
   @Override
   public void displayPlayer(Player player) {
-    // TODO
+    // Clear the screen and show player
+    context.renderFrame(graphics -> {
+      clearScreen(graphics);
+      drawCenteredTitleText(graphics, player.name, HEIGHT / 2 - HEIGHT / 4);
+      graphics.setColor(Color.BLACK);
+      graphics.setFont(TEXT_FONT);
+      graphics.drawString("Money: " + player.money, WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 8);
+      // display the player's board
+      float x = WIDTH / 2 - 8 * 50 / 2;
+      float y = HEIGHT / 2 - 8 * 50 / 2;
+      graphics.setColor(Color.BLACK);
+      for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+          graphics.draw(new Rectangle2D.Float(x + i * 50, y + j * 50, 50, 50));
+        }
+      }
+    });
   }
 
   @Override
