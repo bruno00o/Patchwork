@@ -284,6 +284,8 @@ public record GUI(ApplicationContext context) implements Display {
       float x = WIDTH / 2 - 8 * 50 / 2;
       float y = HEIGHT / 2 - 8 * 50 / 2;
       graphics.setColor(Color.BLACK);
+      // display the player's patches
+
       for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
           graphics.draw(new Rectangle2D.Float(x + i * 50, y + j * 50, 50, 50));
@@ -300,12 +302,19 @@ public record GUI(ApplicationContext context) implements Display {
 
   @Override
   public void buttonFound() {
-    // TODO
+    // Display text
+    context.renderFrame(graphics -> {
+      graphics.drawString("You found a button !", WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 6);
+    });
   }
 
   @Override
   public void leatherPatchFound(Player player, Patch leatherPatch) {
-    // TODO
+    // Display text
+    context.renderFrame(graphics -> {
+      graphics.drawString("You found a leather patch !", WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 6);
+      graphics.drawString("You can place it on your board for free", WIDTH / 2 - WIDTH / 2, HEIGHT / 2 - HEIGHT / 5);
+    });
   }
 
   @Override
@@ -315,17 +324,27 @@ public record GUI(ApplicationContext context) implements Display {
 
   @Override
   public void printNextPlayer(Player player) {
-    // TODO
+    // Display the name of the next player
+    context.renderFrame(graphics -> {
+      graphics.drawString(player.name + "'s turn", WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 6);
+    });
   }
 
   @Override
   public void specialTileFound(Player player, SpecialTile specialTile) {
-    // TODO
+    // Display the winner
+    context.renderFrame(graphics -> {
+      graphics.drawString("You found a special tile of " + specialTile.getSize() + "x" + specialTile.getSize() + "!",
+              WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 6);
+    });
   }
 
   @Override
   public void displayWinner(Player player) {
-    // TODO
+    // Display the winner
+    context.renderFrame(graphics -> {
+      graphics.drawString(player.name + " won!", WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 6);
+    });
   }
 }
 
