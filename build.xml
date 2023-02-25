@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Patchwork" default="jar">
+    <path id="classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <property name="src" value="src"/>
+    <property name="classes" value="classes"/>
+    <property name="javadoc" value="docs/doc"/>
+    <property name="jar" value="Patchwork.jar"/>
+
+    <target name="compile">
+        <javac srcdir="${src}" destdir="${classes}" classpathref="classpath"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <manifest file="MANIFEST.MF">
+            <attribute name="Version" value="1.0"/>
+            <attribute name="Main-Class" value="fr.uge.patchwork.main.Patchwork"/>
+        </manifest>
+        <jar destfile="${jar}" basedir="${classes}" manifest="MANIFEST.MF">
+            <zipfileset src="lib/zen5.jar"/>
+        </jar>
+    </target>
+
+    <target name="javadoc">
+        <mkdir dir="${javadoc}"/>
+        <javadoc destdir="${javadoc}" sourcepath="${src}" classpathref="classpath">
+            <fileset dir="${src}">
+                <include name="**/*.java"/>
+            </fileset>
+        </javadoc>
+    </target>
+
+    <target name="clean">
+        <delete includeEmptyDirs="true" dir="${classes}"/>
+        <mkdir dir="${classes}"/>
+        <delete includeEmptyDirs="true" dir="${javadoc}"/>
+        <mkdir dir="${javadoc}"/>
+        <delete file="${jar}"/>
+        <delete file="MANIFEST.MF"/>
+    </target>
+
+</project>
