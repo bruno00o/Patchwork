@@ -67,7 +67,8 @@ public class Patchwork {
   }
 
   /**
-   * Main method of the game.
+   * Main method 
+   * of the game.
    *
    * @param args (String[]) the arguments.
    */
